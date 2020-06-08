@@ -13,20 +13,36 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - bundle exec rails db:migrate RAILS_ENV=test
-deploy:
-  provider: heroku
-  api_key:
-    secure: W7WaHE4GDVRFQ55S1RhLVqF6FIz81M/H8M/BUVD+iDp72VL+JbtZvFBQ9d6e/FMefzgh7VuNKzNkLIZX4qbGlYFllET7gT67J+XZ/zY9UIfTIJh3iO8gYtFLRipFPNIVd5VFwnWtjl20OdsxdDURvXF/PlDpylZUIZgbQliEfSBIiAFso6VaCtxwIHjXqu6s/u4xahjhY2F1Ubz9s/AHDYTjfaQeOsB/+5w9OaT0CpynJAEE0m4uMuiCnIdTU8ZTNxJjWXO3M8dyy73j6Lm0LQPFjSuaq1LYT5TNDkAc1j43dONQFrXrgy/SZfZyUgI59GXGy2e6YOjSCPGnoFFlV2QQnDLe+vBmDSaYvaLNsVR4F05Wnoel1JTcXpfd7BjZHKmLQ45pAfTD0JdQE1WkCvFsBV3d9+wHiIUI1JdRD9qzpjZ9SVu1/o9QqbEFLR2pW/JAzBJzh6JfXET5MZU0H4JKwOuA/b1k4MJ1Z1Lsa1Nkx8CU+PUgYplaZnDHOBGEW0mgbvLbpFpwaDpmLuSdWN0ZackyEa39NzxQAl2cpej5fFZajaSpUWZeRmK3UNjoU4hwQH8WBdoDx8QQsiK9I7/WxbywIycao7Np6ljdrQU7VMf+gEW3Ajds+ombZH58K46wpHviC9I+XPNfsLYBroZUJDsx509sArkK70MIT5w=
-  app: automatedcx-api-staging
-  on:
-    repo: AutomatedCX/automatedcx-api
-    branch: master
+jobs:
+  include:
+    stage: 'Tests'
+    script:
+      - bundle exec rails test
+    on:
+      all_branches: true
+    stage: deploy to staging
+    script: skip
+    deploy: &heroku
+      provider: heroku
+      api_key:
+        secure: W7WaHE4GDVRFQ55S1RhLVqF6FIz81M/H8M/BUVD+iDp72VL+JbtZvFBQ9d6e/FMefzgh7VuNKzNkLIZX4qbGlYFllET7gT67J+XZ/zY9UIfTIJh3iO8gYtFLRipFPNIVd5VFwnWtjl20OdsxdDURvXF/PlDpylZUIZgbQliEfSBIiAFso6VaCtxwIHjXqu6s/u4xahjhY2F1Ubz9s/AHDYTjfaQeOsB/+5w9OaT0CpynJAEE0m4uMuiCnIdTU8ZTNxJjWXO3M8dyy73j6Lm0LQPFjSuaq1LYT5TNDkAc1j43dONQFrXrgy/SZfZyUgI59GXGy2e6YOjSCPGnoFFlV2QQnDLe+vBmDSaYvaLNsVR4F05Wnoel1JTcXpfd7BjZHKmLQ45pAfTD0JdQE1WkCvFsBV3d9+wHiIUI1JdRD9qzpjZ9SVu1/o9QqbEFLR2pW/JAzBJzh6JfXET5MZU0H4JKwOuA/b1k4MJ1Z1Lsa1Nkx8CU+PUgYplaZnDHOBGEW0mgbvLbpFpwaDpmLuSdWN0ZackyEa39NzxQAl2cpej5fFZajaSpUWZeRmK3UNjoU4hwQH8WBdoDx8QQsiK9I7/WxbywIycao7Np6ljdrQU7VMf+gEW3Ajds+ombZH58K46wpHviC9I+XPNfsLYBroZUJDsx509sArkK70MIT5w=
+      app: automatedcx-api-staging
+      on:
+        repo: AutomatedCX/automatedcx-api
+        branch: master
 
-  provider: heroku
-  api_key:
-    secure: W7WaHE4GDVRFQ55S1RhLVqF6FIz81M/H8M/BUVD+iDp72VL+JbtZvFBQ9d6e/FMefzgh7VuNKzNkLIZX4qbGlYFllET7gT67J+XZ/zY9UIfTIJh3iO8gYtFLRipFPNIVd5VFwnWtjl20OdsxdDURvXF/PlDpylZUIZgbQliEfSBIiAFso6VaCtxwIHjXqu6s/u4xahjhY2F1Ubz9s/AHDYTjfaQeOsB/+5w9OaT0CpynJAEE0m4uMuiCnIdTU8ZTNxJjWXO3M8dyy73j6Lm0LQPFjSuaq1LYT5TNDkAc1j43dONQFrXrgy/SZfZyUgI59GXGy2e6YOjSCPGnoFFlV2QQnDLe+vBmDSaYvaLNsVR4F05Wnoel1JTcXpfd7BjZHKmLQ45pAfTD0JdQE1WkCvFsBV3d9+wHiIUI1JdRD9qzpjZ9SVu1/o9QqbEFLR2pW/JAzBJzh6JfXET5MZU0H4JKwOuA/b1k4MJ1Z1Lsa1Nkx8CU+PUgYplaZnDHOBGEW0mgbvLbpFpwaDpmLuSdWN0ZackyEa39NzxQAl2cpej5fFZajaSpUWZeRmK3UNjoU4hwQH8WBdoDx8QQsiK9I7/WxbywIycao7Np6ljdrQU7VMf+gEW3Ajds+ombZH58K46wpHviC9I+XPNfsLYBroZUJDsx509sArkK70MIT5w=
-  app: automatedcx-api-production
-  on:
-    repo: AutomatedCX/automatedcx-api
-    tags: true
-    branch: master
+    stage: test staging
+    script: 'curl https://automatedcx-api-staging.herokuapp.com/ping'
+
+    stage: deploy to production
+    script: skip
+    deploy:
+      <<: *heroku
+      app: automatedcx-api-production
+      on:
+        repo: AutomatedCX/automatedcx-api
+        branch: master
+        tags: true
+
+    stage: test production
+      script: 'curl https://automatedcx-api-production.herokuapp.com'
