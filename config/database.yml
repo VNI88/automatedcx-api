@@ -21,7 +21,7 @@ test:
   <<: *default
   database: automatedcx_test
   pool: 5
-  username: postgres
+  username: vinicius
   password:
 
 
