@@ -10,7 +10,7 @@ addons:
     - postgresql-11
     - postgresql-client-11
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database automatedcx_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
