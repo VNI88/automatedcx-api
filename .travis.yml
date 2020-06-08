@@ -1,22 +1,19 @@
+language: ruby
+rvm:
+- 2.6.3
 services:
   - postgresql
-  addons:
-    postgresql: "11"
-    apt:
-      packages:
-        - postgresql-11
-        - postgresql-client-11
-        adapter: postgresql
-        database: myapp_test
-        username: postgres
-        before_script:
-          - psql -c 'create database automatedcx_test;' -U postgres
-
-language: ruby
-
-rvm:
-  - 2.6.3
-
+addons:
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
+    - postgresql-client-11
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - bundle exec rails db:migrate RAILS_ENV=test
 deploy:
   provider: heroku
   api_key:
