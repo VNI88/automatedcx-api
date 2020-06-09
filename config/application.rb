@@ -15,5 +15,13 @@ module AutomatedcxApi
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    if Rails.env.test?
+      # Update version file from latest git tag
+      File.open('config/version', 'w') do |file|
+        file.write `git describe --tags`
+      end
+    end
+
+    config.application_version = File.read('config/version')
   end
 end
