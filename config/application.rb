@@ -18,7 +18,8 @@ module AutomatedcxApi
     if Rails.env.test?
       # Update version file from latest git tag
       File.open('config/version', 'w') do |file|
-        file.write `git describe --tags --always`
+        file.write `git describe --tags`
+      end
     end
 
     config.application_version = File.read('config/version')
