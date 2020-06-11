@@ -1,0 +1,4 @@
+:schedule:
+  app_status:
+    every: 8h
+    class: AppStatusWorker
