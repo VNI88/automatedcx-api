@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_222054) do
+ActiveRecord::Schema.define(version: 2020_06_22_222313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendants", id: :serial, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "evaluation", precision: 1, scale: 1, default: "0.0"
+    t.integer "attendences_count", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attendences", id: :serial, force: :cascade do |t|
+    t.bigint "attendant_id", null: false
+    t.integer "interactions_count", default: 0
+    t.jsonb "client_data"
+    t.datetime "started_at", default: "2020-06-23 15:17:53"
+    t.datetime "updated_at", default: "2020-06-23 15:17:53"
+    t.datetime "finished_at"
+  end
+
+  create_table "routines", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "status", null: false
+    t.datetime "started_at", default: "2020-06-23 15:17:53"
+    t.datetime "updated_at", default: "2020-06-23 15:17:53"
+    t.datetime "finished_at"
+  end
 
   create_table "user_events", id: :serial, force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -34,5 +59,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_222054) do
     t.index ["id"], name: "index_users_on_id"
   end
 
+  add_foreign_key "attendants", "users"
+  add_foreign_key "attendences", "attendants"
   add_foreign_key "user_events", "users"
 end
