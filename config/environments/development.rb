@@ -63,4 +63,6 @@ Rails.application.configure do
   Raven.configure do |config|
     config.dsn = 'https://88f9b757447b4c1d9bbcb6162dcf81de@o404238.ingest.sentry.io/5267631'
   end
+
+  config.webpacker.check_yarn_integrity = false
 end
