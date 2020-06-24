@@ -31,8 +31,8 @@ jobs:
         repo: AutomatedCX/automatedcx-api
         branch: staging
       run:
-        spring stop
-        RAILS_ENV=development rake db:migrate
+        - spring stop
+        - RAILS_ENV=development rake db:migrate
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
   - stage: deploy to production
@@ -46,8 +46,8 @@ jobs:
         branch: master
         tags: true
       run:
-        spring stop
-        RAILS_ENV=production rake db:migrate
+        - spring stop
+        - RAILS_ENV=production rake db:migrate
   - stage: test production
     script: curl https://automatedcx-api-production.herokuapp.com
 
