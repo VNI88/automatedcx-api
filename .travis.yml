@@ -1,4 +1,6 @@
 language: ruby
+cache:
+- bundler
 rvm:
 - 2.6.3
 addons:
@@ -21,8 +23,7 @@ jobs:
     on:
       all_branches: true
   - stage: deploy to staging
-    script:
-      - bundle exec rails db:migrate RAILS_ENV=development
+    script: skip
     deploy:
       provider: heroku
       api_key: &1
@@ -31,6 +32,7 @@ jobs:
       on:
         repo: AutomatedCX/automatedcx-api
         branch: staging
+      run: heroku run RAILS_ENV=development rails db:migrate
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
   - stage: deploy to production
