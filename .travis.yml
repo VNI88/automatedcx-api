@@ -32,7 +32,9 @@ jobs:
       on:
         repo: AutomatedCX/automatedcx-api
         branch: staging
-      run: bundle exec rails db:migrate RAILS_ENV=development
+      run:
+        - RAILS_ENV=development bundle install
+        - bundle exec rails db:migrate RAILS_ENV=development
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
   - stage: deploy to production
