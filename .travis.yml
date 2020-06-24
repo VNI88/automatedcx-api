@@ -31,7 +31,7 @@ jobs:
         repo: AutomatedCX/automatedcx-api
         branch: staging
       run:
-        - spring stop
+        - yarn install --check-files
         - RAILS_ENV=development rake db:migrate
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
