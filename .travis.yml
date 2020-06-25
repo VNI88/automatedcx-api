@@ -47,8 +47,7 @@ jobs:
         branch: master
         tags: true
       run:
-        - spring stop
-        - RAILS_ENV=production rake db:migrate
+        - bundle exec rails db:migrate RAILS_ENV=production
   - stage: test production
     script: curl https://automatedcx-api-production.herokuapp.com
 
