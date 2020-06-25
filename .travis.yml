@@ -33,7 +33,6 @@ jobs:
         repo: AutomatedCX/automatedcx-api
         branch: staging
       run:
-        - gem install listen
         - bundle exec rails db:migrate RAILS_ENV=development
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
