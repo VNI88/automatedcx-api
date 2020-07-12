@@ -15,6 +15,13 @@ development:
   database: automatedcx_staging
   url: <%= ENV['STG_DB_URL'] %>
   username: <%= ENV['STG_DB_USER'] %>
+  password: <%= ENV['STG_DB_PASS'] %>evelopment:
+
+staging:    
+  <<: *default
+  database: automatedcx_staging
+  url: <%= ENV['STG_DB_URL'] %>
+  username: <%= ENV['STG_DB_USER'] %>
   password: <%= ENV['STG_DB_PASS'] %>
 
 # Warning: The database defined as "test" will be erased and
@@ -27,7 +34,6 @@ test:
   pool: 5
   username: vinicius
   password:
-
 
 production:
   <<: *default
