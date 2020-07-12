@@ -29,7 +29,11 @@ gem 'redis', '~> 4.0'
 gem 'httparty'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# Use the following gems to create an admin interface
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin_rollincode', '~> 1.0'
+gem "devise"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
