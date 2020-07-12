@@ -15,9 +15,9 @@ development:
   database: automatedcx_staging
   url: <%= ENV['STG_DB_URL'] %>
   username: <%= ENV['STG_DB_USER'] %>
-  password: <%= ENV['STG_DB_PASS'] %>evelopment:
+  password: <%= ENV['STG_DB_PASS'] %>
 
-staging:    
+staging:
   <<: *default
   database: automatedcx_staging
   url: <%= ENV['STG_DB_URL'] %>
