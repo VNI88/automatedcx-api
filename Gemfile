@@ -28,7 +28,7 @@ gem 'redis', '~> 4.0'
 # Use http protocol to consume services
 gem 'httparty'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # Use the following gems to create an admin interface
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', github: 'sferik/rails_admin'
