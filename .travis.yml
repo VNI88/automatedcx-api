@@ -19,7 +19,7 @@ jobs:
   include:
   - stage: Tests
     script:
-    - RAILS_ENV=test rails db:migrate
+    - RAILS_ENV=test rake db:migrate
     - bundle exec rails test
     on:
       all_branches: true
