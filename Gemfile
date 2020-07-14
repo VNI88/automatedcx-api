@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Use to style devise views
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use pg as the database for Active Record
