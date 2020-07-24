@@ -117,7 +117,7 @@ Rails.application.configure do
   # Devise configuration
   config.action_mailer.default_url_options = { host: 'http://automatedcx-api-production.herokuapp.com/' }
 
-  config.mailer_sender = "automatedcxteam@gmail.com"
+  config.mailer_sender = '"AutomatedCX Team" <automatedcxteam@gmail.com>'
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
