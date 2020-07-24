@@ -22,6 +22,15 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+  url = if Rails.env.production?
+          'http://automatedcx-api-production.herokuapp.com/sidekiq'
+        else
+          'http://automatedcx-api-staging.herokuapp.com/sidekiq'
+        end
+
+  config.navigation_static_links = {
+    'Routine Details' => url
+  }
 
   config.actions do
     dashboard                     # mandatory
