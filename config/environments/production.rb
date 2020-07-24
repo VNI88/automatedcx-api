@@ -115,7 +115,7 @@ Rails.application.configure do
   end
 
   # Devise configuration
-  config.action_mailer.default_url_options = { host: 'smtp.sendgrid.net' }
+  config.action_mailer.default_url_options = { host: 'http://automatedcx-api-production.herokuapp.com/' }
 
   config.mailer_sender = '"AutomatedCX Team" <automatedcxteam@gmail.com>'
   config.action_mailer.delivery_method = :smtp
@@ -124,7 +124,7 @@ Rails.application.configure do
     :user_name => ENV['SENDGRID_USERNAME'],
     :password =>  ENV['SENDGRID_PASSWORD'],
     :domain => 'gmail.com',
-    :address => 'smtp.sendgrid.net',
+    :address => 'automatedcxteam@gmail.com',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
