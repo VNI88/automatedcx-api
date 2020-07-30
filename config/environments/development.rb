@@ -65,15 +65,16 @@ Rails.application.configure do
   end
 
   config.webpacker.check_yarn_integrity = false
-  # Devise configuration
-  config.action_mailer.default_url_options = { host: 'http://automatedcx-api-staging.herokuapp.com/' }
+ # Devise configuration
+  config.action_mailer.default_url_options = { host: 'http://automatedcx-api-staging.herokuapp.com' }
+
+  config.mailer_sender = '"AutomatedCX Team" <automatedcxteam@gmail.com>'
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password =>  ENV['SENDGRID_PASSWORD'],
-    :domain => 'herokuapp.com', # change this to your heroku domain, or your custom domain.
-    :address => 'smtp.sendgrid.net',
+    :user_name => ENV['MAIL_USERNAME'],
+    :password =>  ENV['MAIL_PASSWORD'],
+    :address => 'smtp.gmail.com',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true

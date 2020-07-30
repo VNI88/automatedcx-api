@@ -31,6 +31,6 @@ test:
 production:
   <<: *default
   database: automatedcx
-  url: <%= ENV['PRD_DB_URL'] || ENV['STG_DB_URL']%>
-  username: <%= ENV['PRD_DB_USER'] || ENV['STG_DB_USER']%>
-  password: <%= ENV['PRD_DB_PASS'] || ENV['STG_DB_PASS'] %>
+  url: <%= ENV['PRD_DB_URL'] %>
+  username: <%= ENV['PRD_DB_USER'] %>
+  password: <%= ENV['PRD_DB_PASS'] %>
