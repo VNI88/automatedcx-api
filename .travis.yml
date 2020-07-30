@@ -34,7 +34,7 @@ jobs:
         repo: AutomatedCX/automatedcx-api
         branch: staging
       run:
-        - bundle exec rails db:migrate RAILS_ENV=development
+        - bundle exec rails db:migrate RAILS_ENV=production
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
   - stage: deploy to production
