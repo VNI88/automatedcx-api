@@ -47,4 +47,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   # Devise configuration
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.mailer_sender = '"AutomatedCX Team" <automatedcxteam@gmail.com>'
+  config.action_mailer.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['MAIL_USERNAME'],
+    :password =>  ENV['MAIL_PASSWORD'],
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
