@@ -117,13 +117,13 @@ Rails.application.configure do
   # Devise configuration
   config.action_mailer.default_url_options = { host: ENV['STG_HOST'] }
 
-  config.mailer_sender = '"AutomatedCX Team" <automatedcxteam@gmail.com>'
+  config.mailer_sender = '"AutomatedCX Team"'
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['MAIL_USERNAME'],
-    :password =>  ENV['MAIL_PASSWORD'],
-    :address => 'smtp.gmail.com',
+    :user_name => ENV['SENDGRID_USER'],
+    :password =>  ENV['SENDGRID_APIKEY'],
+    :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
