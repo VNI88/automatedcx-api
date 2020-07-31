@@ -118,7 +118,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://automatedcx-api-staging.herokuapp.com/' }
 
   config.action_mailer.delivery_method = :smtp
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
      :user_name => ENV['MAILGUN_USER'],
      :password =>  ENV['MAILGUN_PASS'],
