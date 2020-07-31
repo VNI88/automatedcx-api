@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   get 'ping',     to: 'ping#show'
   get 'version',  to: 'version#show'
+
+  post 'messages',      to:'messages#new'
+  post 'notifications', to: 'notifications#new'
 end
