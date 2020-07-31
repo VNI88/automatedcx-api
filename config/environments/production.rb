@@ -124,7 +124,7 @@ Rails.application.configure do
      :user_name => ENV['MAILGUN_USER'],
      :password =>  ENV['MAILGUN_PASS'],
      :address => 'smtp.mailgun.org',
-     :domain => 'https://automatedcx-api-staging.herokuapp.com/',
+     :domain => 'sandbox083f71853d484579a00b513be49512d8.mailgun.org',
      :port => 587,
      :authentication => :plain,
      :enable_starttls_auto => true
