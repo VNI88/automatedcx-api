@@ -115,17 +115,15 @@ Rails.application.configure do
   end
 
   # Devise configuration
-  config.action_mailer.default_url_options = { host: ENV['STG_HOST'] }
-
-  config.mailer_sender = '"AutomatedCX Team"'
+  config.action_mailer.default_url_options = { host: ENV['STG_HOST'] || ENV['PRD_HOST'] }
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['SENDGRID_USER'],
-    :password =>  ENV['SENDGRID_APIKEY'],
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+     :user_name => ENV['MAILGUN_USER'],
+     :password =>  ENV['MAILGUN_PASS'],
+     :address => 'smtp.mailgun.org',
+     :port => 587,
+     :authentication => :plain,
+     :enable_starttls_auto => true
   }
 end
