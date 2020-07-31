@@ -115,7 +115,7 @@ Rails.application.configure do
   end
 
   # Devise configuration
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://automatedcx-api-staging.herokuapp.com/' }
 
   config.action_mailer.delivery_method = :smtp
 
@@ -123,7 +123,7 @@ Rails.application.configure do
      :user_name => ENV['MAILGUN_USER'],
      :password =>  ENV['MAILGUN_PASS'],
      :address => 'smtp.mailgun.org',
-     :domain => 'sandbox083f71853d484579a00b513be49512d8.mailgun.org',
+     :domain => 'https://automatedcx-api-staging.herokuapp.com/',
      :port => 587,
      :authentication => :plain,
      :enable_starttls_auto => true
