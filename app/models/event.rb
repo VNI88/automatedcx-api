@@ -14,7 +14,7 @@ class Event < ApplicationRecord
 
   def previous_event_id
     self.previous_event_id = Event.where(user_id: self.user_id)
-                                  .where(previous_event_name: self.previous_event_name)
+                                  .where(name: self.previous_event_name)
                                   .where(category: self.category).last.&id
   end
 
