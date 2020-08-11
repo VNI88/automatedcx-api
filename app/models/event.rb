@@ -15,7 +15,7 @@ class Event < ApplicationRecord
   def previous_event_id
     self.previous_event_id = Event.where(user_id: self.user_id)
                                   .where(name: self.previous_event_name)
-                                  .where(category: self.category).last.&id
+                                  .where(category: self.category).last&.id
   end
 
   scope :based_on_company_name, lambda {
