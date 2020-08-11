@@ -8,6 +8,6 @@ class CreateUserEvents < ActiveRecord::Migration[6.0]
       t.datetime :finished_at
     end
 
-    add_foreign_key :user_events, :users, column: :user_id, primary_key: :id 
+    add_foreign_key :user_events, :users, column: :user_id, primary_key: :id
   end
 end

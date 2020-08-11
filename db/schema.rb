@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_235145) do
+ActiveRecord::Schema.define(version: 2020_08_08_035837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,20 +32,29 @@ ActiveRecord::Schema.define(version: 2020_07_23_235145) do
     t.datetime "finished_at"
   end
 
+  create_table "events", id: :serial, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "started_at", default: "2020-06-23 02:31:21"
+    t.datetime "finished_at"
+    t.string "name", null: false
+    t.string "category", null: false
+    t.jsonb "metadata", default: {}
+    t.bigint "previous_event_id"
+    t.string "previous_event_name", default: "no_previous_event"
+    t.string "next_event_name", default: "no_next_event"
+  end
+
   create_table "routines", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "status", null: false
     t.datetime "started_at", default: "2020-06-23 15:17:53"
     t.datetime "updated_at", default: "2020-06-23 15:17:53"
     t.datetime "finished_at"
-  end
-
-  create_table "user_events", id: :serial, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "started_at", default: "2020-06-23 02:31:21"
-    t.datetime "finished_at"
-    t.string "name", null: false
-    t.string "category", null: false
+    t.string "action"
+    t.bigint "user_id"
+    t.string "monitoring_criteria", null: false
+    t.string "periodicity", null: false
+    t.datetime "starts_at"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_235145) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "company_name", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["id"], name: "index_users_on_id"
@@ -76,5 +86,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_235145) do
 
   add_foreign_key "attendants", "users"
   add_foreign_key "attendences", "attendants"
-  add_foreign_key "user_events", "users"
+  add_foreign_key "events", "users"
+  add_foreign_key "routines", "users"
 end
