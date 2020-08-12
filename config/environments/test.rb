@@ -34,7 +34,7 @@ Rails.application.configure do
   config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
-
+  #config.logger = Logger.new(STDOUT)
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
@@ -47,4 +47,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   # Devise configuration
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.mailer_sender = '"AutomatedCX Team" '
+  config.action_mailer.delivery_method = :smtp
+  # Install MailCatcher gem
+  config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 end

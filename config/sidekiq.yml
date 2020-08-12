@@ -1,4 +1,3 @@
 :schedule:
-  app_status:
+  AppStatus:
     every: 8h
-    class: AppStatusWorker
