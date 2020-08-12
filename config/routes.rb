@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  resources :routines, only: %i[index create show update destroy]
+  resources :events, only: %i[index create show update destroy]
+
   get 'ping',     to: 'ping#show'
   get 'version',  to: 'version#show'
 

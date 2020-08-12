@@ -35,7 +35,7 @@ class AccountConfirmationWorker
   end
 
   def generate_account_confirmation_email_event(user_id)
-    UserEvent.create!(
+    Event.create!(
       user_id: user_id,
       category: 'registration',
       name: 'second_account_confirmation_email',

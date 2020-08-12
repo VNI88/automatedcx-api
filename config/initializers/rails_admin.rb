@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
    config.current_user_method(&:current_user)
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -23,14 +23,15 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
   url = if Rails.env.production?
-          'http://automatedcx-api-production.herokuapp.com/sidekiq'
+          ENV['STG_SIDEKIQ_HOST'] || ENV['PRD_SIDEKIQ_HOST']
         else
-          'http://automatedcx-api-staging.herokuapp.com/sidekiq'
+          'localhost:3000/sidekiq'
         end
 
   config.navigation_static_links = {
     'Routine Details' => url
   }
+  config.parent_controller = 'ApplicationController'
 
   config.actions do
     dashboard                     # mandatory
