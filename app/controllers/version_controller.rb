@@ -1,5 +1,5 @@
 class VersionController < ApplicationController
   def show
-    render plain: Rails.configuration.application_version
+    render plain: '3.0.0'
   end
 end
