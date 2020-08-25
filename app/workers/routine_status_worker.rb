@@ -25,14 +25,14 @@ class RoutineStatusWorker
   end
 
   def has_passed_a_day?(routine)
-    routine.finished_at.day  < Date.today
+    routine.finished_at.day < Time.zone.today
   end
 
   def has_passed_a_week?(routine)
-    Date.today - routine.finished_at.day == 8
+    Time.zone.today - routine.finished_at.day == 8
   end
 
   def has_passed_a_month?(routine)
-    routine.finished_at.month  < Date.today.month
+    routine.finished_at.month < Time.zone.today.month
   end
 end
