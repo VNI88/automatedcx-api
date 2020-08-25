@@ -10,11 +10,11 @@ class RoutinesController < ApplicationController
       Routine.create!(
         user_id: current_user.id,
         name: params[:name],
-        status: 'scheduled',
         action: params[:action],
         starts_at: params[:starts_at],
         periodicity: params[:periodicity],
-        monitoring_criteria: params[:monitoring_criteria]
+        monitoring_criteria: params[:monitoring_criteria],
+        monitored_event: params[:monitored_event]
       )
     rescue StandardError => error
       Raven.capture_exception(error)
@@ -37,7 +37,8 @@ class RoutinesController < ApplicationController
              action: params[:action],
              starts_at: params[:starts_at],
              periodicity: params[:periodicity],
-             monitoring_criteria: params[:monitoring_criteria]
+             monitoring_criteria: params[:monitoring_criteria],
+             monitored_event: params[:monitored_event]
             )
   end
 
@@ -48,12 +49,12 @@ class RoutinesController < ApplicationController
   private
 
   def validate_routine_creation_params
-    params.require(%i[name action periodicity monitoring_criteria])
-    params.permit(:starts_at, :user_id)
+    params.require(%i[name action periodicity monitoring_criteria monitored_event])
+    params.permit(:starts_at)
   end
 
   def validate_routine_params
     params.require(:id)
-    params.permit(:name, :status, :action, :starts_at, :periodicity)
+    params.permit(:name, :action, :starts_at, :periodicity, :monitored_event)
   end
 end
