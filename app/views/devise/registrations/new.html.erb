@@ -15,7 +15,7 @@
 
   <div class="form-group">
     <%= f.label :role %><br />
-    <%= f.text_field :role, autofocus: true, autocomplete: "role", class: 'form-control' %>
+    <%= f.select(:role, options_for_select([['Please select your role', ''],'admin', 'developer', 'analyst']), {}, {class: "form-control"}) %>
   </div>
 
   <div class="form-group">
