@@ -17,7 +17,7 @@ namespace :staging_test do
     user_metadata = {
      users: [
       { name: 'Vinicius', phone: '+5511998436963'},
-      { name: 'William',   phone: '+5511956188884'},
+      { name: 'William',  phone: '+5511956188884'},
       { name: 'Rafael',   phone: '+5511974107341'},
       { name: 'Nicolas',  phone: '+5511962697679'}
      ]
