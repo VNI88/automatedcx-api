@@ -13,7 +13,7 @@ class WhatsappMessageSender
     begin
       message = @client.messages.create(
         body: message_body,
-        to: "whatsapp: #{recipient_phone_number}",
+        to: "whatsapp:#{recipient_phone_number}",
         from: "whatsapp: +14155238886"
       )
 
