@@ -11,11 +11,9 @@ class EventsController < ApplicationController
         user_id: current_user.id,
         name: params[:name],
         category: params[:category],
-        previous_event_name: params[:previous_event_name],
-        next_event_name: params[:next_event_name],
         metadata: params[:metadata],
-        started_at: params[:started_at],
-        finished_at: params[:finished_at]
+        previous_event_name: params[:previous_event_name],
+        next_event_name: params[:next_event_name]
       )
     rescue StandardError => error
       Raven.capture_exception(error)
@@ -51,11 +49,11 @@ class EventsController < ApplicationController
 
   def validate_event_creation_params
     params.require(%i[name category])
-    params.permit(:previous_event_name, :next_event_name, :metadata, :stated_at, :finished_at)
+    params.permit(:previous_event_name, :next_event_name, :metadata, :started_at, :finished_at)
   end
 
   def validate_event_params
     params.require(:id)
-    params.permit(:name, :category, :previous_event_name, :next_event_name, :metadata, :stated_at, :finished_at)
+    params.permit(:name, :category, :previous_event_name, :next_event_name, :metadata, :started_at, :finished_at)
   end
 end
