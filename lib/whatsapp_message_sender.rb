@@ -6,15 +6,15 @@ require 'twilio-ruby'
 # when a routine trigger gets actioned
 class WhatsappMessageSender
   def initialize
-    @client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN'])
+    @client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   end
 
-  def send_message(recipient_telephone_number, message_body)
+  def send_message(recipient_phone_number, message_body)
     begin
       message = @client.messages.create(
         body: message_body,
-        to: recipient_telephone_number,
-        from: "+15005550006"
+        to: "whatsapp: #{recipient_phone_number}",
+        from: "whatsapp: +14155238886"
       )
 
       Rails.logger.info(message.sid)
