@@ -23,7 +23,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
   url = if Rails.env.production?
-          ENV['STG_SIDEKIQ_HOST'] || ENV['PRD_SIDEKIQ_HOST']
+          ENV['SIDEKIQ_HOST']
         else
           'localhost:3000/sidekiq'
         end

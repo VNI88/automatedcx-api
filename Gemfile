@@ -47,6 +47,8 @@ gem 'cancancan'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Use to validate the status of our services
+gem 'status-page'
 
 gem 'listen', '>= 3.0.5', '< 3.2'
 group :development, :test do

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount StatusPage::Engine, at: '/'
 
   resources :routines, only: %i[index create show update destroy]
   resources :events, only: %i[index create show update destroy]
