@@ -22,14 +22,24 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+
   url = if Rails.env.production?
           ENV['SIDEKIQ_HOST']
+  
+
         else
           'localhost:3000/sidekiq'
         end
 
+   api_docs_url = if Rails.env.production?
+          ENV['STG_SWAGGER_URL'] || ENV['PRD_SWAGGER_URL']
+        else
+          'localhost:3000/api-docs'
+        end
+
   config.navigation_static_links = {
-    'Routine Details' => url
+    'Routine Details' => sidekiq_url,
+    'Api Docs' => api_docs_url
   }
   config.parent_controller = 'ApplicationController'
 

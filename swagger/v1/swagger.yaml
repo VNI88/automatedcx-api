@@ -1,0 +1,876 @@
+---
+openapi: 3.0.1
+info:
+  title: AutomatedCX API V1
+  version: v1
+paths:
+  "/events":
+    post:
+      summary: Create a event to monitor an event
+      tags:
+      - Events
+      security:
+      - api_key: []
+      parameters: []
+      responses:
+        '200':
+          description: event created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                category:
+                  type: string
+                metadata:
+                  type: object
+                  properties:
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          phone:
+                            type: string
+                previous_event_name:
+                  type: string
+                next_event_name:
+                  type: string
+    get:
+      summary: List all created events
+      tags:
+      - Events
+      security:
+      - api_key: []
+      responses:
+        '200':
+          description: events found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '401':
+          description: unauthorized
+          content: {}
+  "/events/{id}":
+    get:
+      summary: Retrieves an specific event
+      tags:
+      - Events
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: event found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+    put:
+      summary: Update the event
+      tags:
+      - Events
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: event updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                started_at:
+                  type: string
+                  format: date-time
+                finished_at:
+                  type: string
+                  format: date-time
+                name:
+                  type: string
+                category:
+                  type: string
+                metadata:
+                  type: object
+                  properties:
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          phone:
+                            type: string
+                previous_event_id:
+                  type: integer
+                previous_event_name:
+                  type: string
+                next_event_name:
+                  type: string
+    patch:
+      summary: Update the event
+      tags:
+      - Events
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: event updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                started_at:
+                  type: string
+                  format: date-time
+                finished_at:
+                  type: string
+                  format: date-time
+                name:
+                  type: string
+                category:
+                  type: string
+                metadata:
+                  type: object
+                  properties:
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          phone:
+                            type: string
+                previous_event_id:
+                  type: integer
+                previous_event_name:
+                  type: string
+                next_event_name:
+                  type: string
+    delete:
+      summary: Delete an specific event
+      tags:
+      - Events
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: event deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  started_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  name:
+                    type: string
+                  category:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            phone:
+                              type: string
+                  previous_event_id:
+                    type: integer
+                  previous_event_name:
+                    type: string
+                  next_event_name:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+  "/ping":
+    get:
+      summary: Validate if the app is available
+      tags:
+      - Ping
+      responses:
+        '200':
+          description: 'code: 200'
+          content: {}
+  "/routines":
+    post:
+      summary: Create a routine to monitor an event
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      parameters: []
+      responses:
+        '200':
+          description: routine created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+                required:
+                - name
+                - action
+                - starts_at
+                - periodicity
+                - monitoring_criteria
+                - monitored_event
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                action:
+                  type: string
+                starts_at:
+                  type: string
+                  format: date-time
+                periodicity:
+                  type: string
+                monitoring_criteria:
+                  type: string
+                monitored_event:
+                  type: string
+              required:
+              - name
+              - action
+              - starts_at
+              - periodicity
+              - monitoring_criteria
+              - monitored_event
+    get:
+      summary: List all created routines
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      responses:
+        '200':
+          description: routines found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+        '401':
+          description: unauthorized
+          content: {}
+  "/routines/{id}":
+    get:
+      summary: Retrieves an specific routine
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: routine found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+    put:
+      summary: Update the routine
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: routine updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                action:
+                  type: string
+                starts_at:
+                  type: string
+                  format: date-time
+                periodicity:
+                  type: string
+                monitoring_criteria:
+                  type: string
+                monitored_event:
+                  type: string
+                started_at:
+                  type: string
+                  format: date-time
+                updated_at:
+                  type: string
+                  format: date-time
+                finished_at:
+                  type: string
+                  format: date-time
+                user_id:
+                  type: integer
+                message_template:
+                  type: string
+              required:
+              - name
+              - action
+              - starts_at
+              - periodicity
+              - monitoring_criteria
+              - monitored_event
+    patch:
+      summary: Update the routine
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: routine updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                action:
+                  type: string
+                starts_at:
+                  type: string
+                  format: date-time
+                periodicity:
+                  type: string
+                monitoring_criteria:
+                  type: string
+                monitored_event:
+                  type: string
+                started_at:
+                  type: string
+                  format: date-time
+                updated_at:
+                  type: string
+                  format: date-time
+                finished_at:
+                  type: string
+                  format: date-time
+                user_id:
+                  type: integer
+                message_template:
+                  type: string
+              required:
+              - name
+              - action
+              - starts_at
+              - periodicity
+              - monitoring_criteria
+              - monitored_event
+    delete:
+      summary: Delete an specific routine
+      tags:
+      - Routines
+      security:
+      - api_key: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: routine deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  action:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  periodicity:
+                    type: string
+                  monitoring_criteria:
+                    type: string
+                  monitored_event:
+                    type: string
+                  started_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  finished_at:
+                    type: string
+                    format: date-time
+                  user_id:
+                    type: integer
+                  message_template:
+                    type: string
+        '404':
+          description: not found
+          content: {}
+        '401':
+          description: unauthorized
+          content: {}
+  "/version":
+    get:
+      summary: Validate the app Version
+      tags:
+      - Version
+      responses:
+        '200':
+          description: v4.0.1
+          content: {}
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: automatedcx-api-staging.herokuapp.com
