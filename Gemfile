@@ -45,6 +45,11 @@ gem 'cancancan'
 # Use swagger to document endpoints
 gem 'rswag-api'
 gem 'rswag-ui'
+# Use to generate pdfs
+gem 'prawn-rails'
+# Use to generate graphics
+gem 'rmagick', '~> 4.1.2'
+gem 'gruff'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
-
+  require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ExportPdf)
   ### Popular gems integration
 
   ## == Devise ==
@@ -30,7 +31,7 @@ RailsAdmin.config do |config|
   config.parent_controller = 'ApplicationController'
 
   config.actions do
-    dashboard                     # mandatory
+    dashboard
     index                         # mandatory
     new
     export
@@ -39,6 +40,9 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    export_pdf do
+      only Routine
+    end
 
     ## With an audit adapter, you can add:
     # history_index
