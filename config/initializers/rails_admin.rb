@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
-
+  require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ExportPdf)
   ### Popular gems integration
 
   ## == Devise ==
@@ -22,19 +23,15 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-  url = if Rails.env.production?
-          ENV['STG_SIDEKIQ_HOST'] || ENV['PRD_SIDEKIQ_HOST']
-        else
-          'localhost:3000/sidekiq'
-        end
 
   config.navigation_static_links = {
-    'Routine Details' => url
+    'Routine Details' => ENV['SIDEKIQ_URL'] || 'localhost:3000/sidekiq',
+    'Api Docs' => ENV['SWAGGER_URL'] || 'localhost:3000/api-docs'
   }
   config.parent_controller = 'ApplicationController'
 
   config.actions do
-    dashboard                     # mandatory
+    dashboard
     index                         # mandatory
     new
     export
@@ -43,6 +40,9 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    export_pdf do
+      only Routine
+    end
 
     ## With an audit adapter, you can add:
     # history_index

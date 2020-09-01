@@ -11,7 +11,7 @@ module AutomatedcxApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults '6.0'
-    config.autoload_paths << Rails.root.join('app')
+    config.autoload_paths << Rails.root.join('app', 'lib', 'modules')
 
     Redis.exists_returns_integer =  true
 

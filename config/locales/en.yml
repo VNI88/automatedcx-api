@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  en:
+  admin:
+    actions:
+      export_pdf:
+        menu: 'Export Pdf'
+        title: 'Export Pdf'
+        breadcrumb: 'Export Pdf'
