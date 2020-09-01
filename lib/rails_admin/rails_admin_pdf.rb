@@ -46,8 +46,6 @@ module RailsAdmin
               #event_pdf.save
               #event_pdf.write
               #event_pdf.delete
-            else
-              # TODO implement an alert
             end
             #redirect_to back_or_index
           end
