@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include RailsAdminCharts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,5 +36,13 @@ class User < ApplicationRecord
       started_at: new_user.created_at,
       finished_at: Time.now
     )
+  end
+
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
   end
 end

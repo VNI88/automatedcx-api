@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  include RailsAdminCharts
   belongs_to :user
   before_save :previous_event_id
 
@@ -18,8 +19,17 @@ class Event < ApplicationRecord
                                   .where(category: self.category).last&.id
   end
 
-  scope :based_on_company_name, lambda {
+  scope :based_on_company_name, lambda { |company_name|
     joins(:user)
-      .where('users.company_name = ?', current_user.company_name)
+      .where('users.company_name = ?', company_name)
   }
+
+  def self.graph_data since=30.days.ago
+    company_name = User.current.company_name
+    self.based_on_company_name(company_name).group(:name).count.to_a
+  end
+
+  def self.chart_type
+    'pie'
+  end
 end
