@@ -5,6 +5,7 @@ ruby '2.6.3'
 
 # Use to style devise views
 gem 'jquery-rails'
+gem 'coffee-rails', '~> 5.0.0'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -52,7 +53,9 @@ gem 'rmagick', '~> 4.1.2'
 gem 'gruff'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+# Use to present dynamic charts
+gem 'rails_admin_charts'
+gem "highcharts-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 # Use to validate the status of our services

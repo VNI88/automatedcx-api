@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_current_user
+
   # load_and_authorize_resource
 
   def configure_permitted_parameters
@@ -17,6 +19,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(_resource_or_scope)
     new_user_session_url
+  end
+
+  def set_current_user
+    User.current = current_user
   end
 
   rescue_from CanCan::AccessDenied do |exception|

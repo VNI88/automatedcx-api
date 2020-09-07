@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_003605) do
+ActiveRecord::Schema.define(version: 2020_09_01_233304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_003605) do
     t.bigint "previous_event_id"
     t.string "previous_event_name", default: "no_previous_event"
     t.string "next_event_name", default: "no_next_event"
+    t.datetime "created_at"
   end
 
   create_table "routines", id: :serial, force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_003605) do
     t.datetime "starts_at"
     t.string "monitored_event"
     t.string "message_template"
+    t.datetime "created_at"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

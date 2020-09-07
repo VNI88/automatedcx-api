@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    Event.joins(:user).where('users.company = ?', current_user.company)
+    Event.based_on_company_name(current_user.company_name)
   end
 
   def show
