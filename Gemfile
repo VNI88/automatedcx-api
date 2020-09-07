@@ -42,17 +42,24 @@ gem "devise"
 gem 'twilio-ruby'
 # Use CanCanCan to manage different access levels
 gem 'cancancan'
+# Use swagger to document endpoints
+gem 'rswag-api'
+gem 'rswag-ui'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Use to validate the status of our services
+gem 'status-page'
 
 gem 'listen', '>= 3.0.5', '< 3.2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'irb'
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do

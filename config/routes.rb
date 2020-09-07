@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :users
   devise_scope :user do
     root to: 'devise/sessions#new'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  mount StatusPage::Engine, at: '/'
 
   resources :routines, only: %i[index create show update destroy]
   resources :events, only: %i[index create show update destroy]
