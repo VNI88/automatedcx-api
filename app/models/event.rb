@@ -24,7 +24,7 @@ class Event < ApplicationRecord
       .where('users.company_name = ?', company_name)
   }
 
-  def self.graph_data since=30.days.ago
+  def self.graph_data(_since = 30.days.ago)
     company_name = User.current.company_name
     self.based_on_company_name(company_name).group(:name).count.to_a
   end

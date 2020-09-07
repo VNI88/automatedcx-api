@@ -12,9 +12,9 @@ class Routine < ApplicationRecord
 
   scope :to_reschedule, -> { where(status: 'completed') }
 
-  def self.graph_data since=30.days.ago
-    current_user_id = User.current.company_name
-    self.based_on_company_name(current_user_id, %i[unscheduled scheduled completed]).group(:status).count.to_a
+  def self.graph_data(_since = 30.days.ago)
+    company_name = User.current.company_name
+    self.based_on_company_name(company_name, %i[unscheduled scheduled completed]).group(:status).count.to_a
   end
 
   def self.chart_type
