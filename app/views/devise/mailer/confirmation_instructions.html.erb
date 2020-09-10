@@ -1,5 +1,9 @@
 <p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<% if @user.role == 'developer' %>
+  <p>Your api key is <%= @user.api_key %>, to learn more about our api check it out our docs - <%= rswag_ui_url %></p>
+<% end %>
+
+<p>Please, confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
