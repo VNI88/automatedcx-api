@@ -66,7 +66,7 @@ module Pdf
           completed_routines = Routine.based_on_company_name(@current_user.company_name, :completed)
 
           completed_routines.each do |routine|
-            pdf.text "Id #{routine.id}, name - #{routine.name}, monitored event - #{routine.monitored_event}, monitoring criteria - #{routine.monitoring_criteria} , starts at #{routine.starts.strftime("%d/%m/%y as %H:%M")}",
+            pdf.text "Id #{routine.id}, name - #{routine.name}, monitored event - #{routine.monitored_event}, monitoring criteria - #{routine.monitoring_criteria} , starts at #{routine.starts_at.strftime("%d/%m/%y as %H:%M")}",
             :size => 12, :align => :justify, :inline_format => true
             pdf.move_down 8
           end
