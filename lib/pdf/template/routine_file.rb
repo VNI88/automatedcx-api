@@ -35,7 +35,7 @@ module Pdf
           unscheduled_routines = Routine.based_on_company_name(@current_user.company_name, :unscheduled)
 
           unscheduled_routines.each do |routine|
-            pdf.text "Id #{routine.id}, name - #{routine.name}, monitored event - #{routine.monitored_event}, monitoring criteria - #{routine.monitoring_criteria} , starts at #{routine.starts_at.strftime("%d/%m/%y as %H:%M")}",
+            pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
             :size => 12, :align => :justify, :inline_format => true
             pdf.move_down 8
           end
@@ -51,7 +51,7 @@ module Pdf
           scheduled_routines = Routine.based_on_company_name(@current_user.company_name, :scheduled)
 
           scheduled_routines.each do |routine|
-            pdf.text "Id #{routine.id}, name - #{routine.name}, monitored event - #{routine.monitored_event}, monitoring criteria - #{routine.monitoring_criteria} , starts at #{routine.starts_at.strftime("%d/%m/%y as %H:%M")}",
+            pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
             :size => 12, :align => :justify, :inline_format => true
             pdf.move_down 8
           end
@@ -66,7 +66,7 @@ module Pdf
           completed_routines = Routine.based_on_company_name(@current_user.company_name, :completed)
 
           completed_routines.each do |routine|
-            pdf.text "Id #{routine.id}, name - #{routine.name}, monitored event - #{routine.monitored_event}, monitoring criteria - #{routine.monitoring_criteria} , starts at #{routine.starts_at.strftime("%d/%m/%y as %H:%M")}",
+            pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
             :size => 12, :align => :justify, :inline_format => true
             pdf.move_down 8
           end
@@ -101,7 +101,7 @@ module Pdf
 
           pdf.font "Helvetica"
           pdf.text "Automated CX #{Time.now.year}", :size => 10, :inline_format => true, :valign => :bottom, :align => :left
-          pdf.number_pages "Generated at: #{(Time.now).strftime("%d/%m/%y as %H:%M")} - Page ", :start_count_at => 0, :page_filter => :all, :at => [pdf.bounds.right - 140, 7], :align => :right, :size => 8
+          pdf.number_pages "Generated at: #{(Time.now).strftime("%d/%m/%y at %H:%M")}    Page <page>", :start_count_at => 0, :page_filter => :all, :at => [pdf.bounds.right - 140, 7], :align => :right, :size => 8
           pdf.render_file("tmp/#{@file_name}.pdf")
         end
       end
