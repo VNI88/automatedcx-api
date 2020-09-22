@@ -41,7 +41,7 @@ RailsAdmin.config do |config|
     delete
     show_in_app
     export_pdf do
-      only Routine
+      except User
     end
 
     charts

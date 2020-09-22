@@ -2,6 +2,7 @@
 
 require 'rails_admin/config/actions'
 require_relative '../pdf/template/routine_file.rb'
+require_relative '../pdf/template/event_file.rb'
 require_relative '../pdf/base.rb'
 
 module RailsAdminPdf
@@ -40,14 +41,15 @@ module RailsAdmin
 
               routine_pdf.delete
             when 'Event'
-              # TO DO implement this report
+              event_pdf = Pdf::Template::EventFile.new(current_user)
+              event_pdf.write
 
-              #event_pdf = Pdf::Template::Event.new(@object)
-              #event_pdf.save
-              #event_pdf.write
-              #event_pdf.delete
+              File.open("tmp/#{event_pdf.instance_values['file_name']}.pdf", 'r') do |file|
+                send_data file.read.force_encoding('BINARY'), :filename => "#{event_pdf.instance_values['file_name']}.pdf", :type => "application/pdf", :disposition => "attachment"
+              end
+
+              event_pdf.delete
             end
-            #redirect_to back_or_index
           end
         end
       end

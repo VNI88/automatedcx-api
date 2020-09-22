@@ -24,6 +24,16 @@ class Event < ApplicationRecord
       .where('users.company_name = ?', company_name)
   }
 
+  def self.based_on_company_name_with_filter(company_name)
+    select(based_on_company_name_columns_alias).based_on_company_name(company_name)
+  end
+
+  def self.based_on_company_name_columns_alias
+    'events.user_id, events.id, events.started_at, events.finished_at, events.name AS event_name,'\
+      ' events.category, events.metadata, events.previous_event_id, events.previous_event_name,'\
+      ' events.next_event_name, events.created_at, users.name AS user_name'\
+  end
+
   def self.graph_data(_since = 30.days.ago)
     company_name = User.current.company_name
     self.based_on_company_name(company_name).group(:name).count.to_a
