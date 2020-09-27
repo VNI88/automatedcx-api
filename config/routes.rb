@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   devise_for :users
   devise_scope :user do
-    root to: 'devise/sessions#new'
+    root to: 'landing_page#index'
   end
+
 
   authenticate :user do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
