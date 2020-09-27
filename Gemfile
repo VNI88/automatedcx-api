@@ -60,6 +60,8 @@ gem "highcharts-rails"
 gem 'bootsnap', '>= 1.4.2', require: false
 # Use to validate the status of our services
 gem 'status-page'
+# Use to run all third-party services
+gem 'foreman'
 
 gem 'listen', '>= 3.0.5', '< 3.2'
 group :development, :test do
