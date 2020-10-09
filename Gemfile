@@ -62,7 +62,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'status-page'
 # Use to run all third-party services
 gem 'foreman'
-
+# Adding gem for telegram bot
+gem 'telegram-bot-ruby'
+# Use to save requests to third party apps
+gem 'vcr', '~> 3.0', '>= 3.0.1'
+# Used to mock requests
+gem 'webmock'
 gem 'listen', '>= 3.0.5', '< 3.2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

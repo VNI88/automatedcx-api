@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.telegram.org/bot1108950852:AAFoNs0tOWg6Y-cMOxkHU8LD5Jg_n9bZYG4/sendMessage
+    body:
+      encoding: UTF-8
+      string: chat_id=-1001187107517&text=HELLO+MY+FRIENDS
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.16.1
+      Date:
+      - Fri, 09 Oct 2020 01:14:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '247'
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Expose-Headers:
+      - Content-Length,Content-Type,Date,Server,Connection
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"result":{"message_id":17,"from":{"id":1108950852,"is_bot":true,"first_name":"Dorothy","username":"AutomatedCxBot"},"chat":{"id":-1001187107517,"title":"AutomatedCxTest","type":"supergroup"},"date":1602206061,"text":"HELLO
+        MY FRIENDS"}}'
+    http_version: 
+  recorded_at: Fri, 09 Oct 2020 01:14:21 GMT
+recorded_with: VCR 3.0.3
