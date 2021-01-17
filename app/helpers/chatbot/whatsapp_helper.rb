@@ -1,0 +1,2 @@
+module Chatbot::WhatsappHelper
+end

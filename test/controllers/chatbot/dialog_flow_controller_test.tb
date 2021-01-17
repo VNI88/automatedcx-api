@@ -1,0 +1,14 @@
+require 'test_helper'
+
+class Chatbot::DialogFlowControllerTest < ActionDispatch::IntegrationTest
+  test 'should check weather succesfully based on the city' do
+    VCR.use_cassette('should check weather succesfully based on the city') do
+     post '/chatbot/dialog_flow',
+      params: {
+        city: 'Aracaju, BR',
+      }
+
+     assert_response :success
+    end
+  end
+end

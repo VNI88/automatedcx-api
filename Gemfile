@@ -69,6 +69,17 @@ gem 'vcr', '~> 3.0', '>= 3.0.1'
 # Used to mock requests
 gem 'webmock'
 gem 'listen', '>= 3.0.5', '< 3.2'
+# Use to make researches on wikipedia
+gem "wikipedia-client"
+# Use to communicate with facebook messenger
+gem "facebook-messenger"
+# Use to check weather
+gem 'open-weather'
+# Use to make research on google
+gem "google_custom_search_api"
+# Use to manage credentials
+gem "figaro"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
