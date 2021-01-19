@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
-require 'wikipedia'
+# This class is responsible to make a research on Google
 
-# This class is responsible to make a research on Wikipedia
-
-class WikipediaConsulter
+class GoogleConsulter
  def initialize(theme)
    @theme = theme
  end
 
  def call
-   result = Wikipedia.find(@theme)
+   result = GoogleCustomSearchApi.search(@theme)
    OpenStruct.new({ success?: true, payload: formatted_result(result) })
   rescue StandardError => e
     Raven.capture_exception(e)
@@ -20,16 +18,11 @@ class WikipediaConsulter
  private
 
  def formatted_result(result)
-   rendered_text = if result.text.present?
-              "#{result.text.slice(0, 150)}...\b complete article: #{result.fullurl}"
-            else
-              "I didn't find anything related :("
-            end
-   {
-     speech: rendered_text,
-     displayText: rendered_text,
-     data: "",
-     source: 'Chatbot'
-   }
+   items = result.to_h['items'].slice(0, 3).map do|item|
+     {
+       title: item['title'],
+       link: item['link']
+     }
+   end
  end
 end
