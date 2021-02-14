@@ -28,13 +28,13 @@ jobs:
     deploy:
       provider: heroku
       api_key: &1
-        secure: BPNxj84qpXNaB5RnP2XHxUm+51FBm+iV727ulDDEWv9Ia6ZaWo4LDths+XTxgTvVbJ606S9Rjm5Kr5rJWRCOeiwFWiFOzvgxwQ9qclkN0zUMRkuaCBAFGxz5VcW6V+pjky33IHydphOZMRjHR52ACtDGRtQI16zr3dkbDTx94QMuAneh18p9rgi1K2A/VjdSJT7cJ8Qb230Fi5/Y2Qfxz50VaMLwMDscSnG8L636bJ/moEfeM+6yMhz+P5D7hLGIXII/CG0saoHNpJANSKKGzKfj0D7ItQcz+fQgWsxQ7Qnrztz3ojrxhivxZo77ezmaaEjaIxdx7CJGwOX92nVqUV42FMANQ7eshwDNhHdesQZxYG/fYI87dC/gLP3dHDvRpD0ZUyninX1PWNx2pWPmP/5bJ7FRWwWPB0NFs3wYGG3TBtuE7QTJ+dtyXcI2PHtriPqAQ2/lKiXCgJe2HUflETL7FFCkDKucUJWxHnnI8sU2xeDVwCi5sYB0rtysgAiBJfKW66Wea3RevBfAUXNjElFFpRuzgs16hLzaEs18EYttacXyJOGw+RN0AwZbJb11dcU9tUOFRGfqY+H92U+tmcGHfHPkEAEH3bcZS8k5fGRrQf1GkXduhKjR+EIfn7/WpdspHcsvRXsa2D7ndMXKOnL7YXlUr4pylzdX9vAIPR4=
+        secure: bPMw+hkON8aCJ7yJlCPVpMBqsG1Hmwlydp6/+l9a8cfUD/KMETQ0tyMdViJchvJG9qsUnvrtv3F1ooRboIXgmjgDAaIbcqnGL8hsEslUj2EMakn81QUCtE3u6BCSOlPfUhvIIrAgqY9shZyvkqu/edDln/XweLRRLN0LzIDdLqhxI+t/P5H3DH7nYAvIV21nCvI/exqjpH7ATHFNazVa9jMIjLtk/SkROIPvN251Z3WadbaJ2PbJc3JFA+a9JBPbPRmXM96HJlvHfQ3ljmJw7m+RrXp1wuYeyKijdpj8jIDKBA9zfrUI/Caf6jty2fHkzFQD+67T1f1okOY+KV4axv2479y/ydHOSYXm5KOz1sJ0o440/u/pkirfwIeeJCEpIzgvmvmmWx5yAq9DJuSrpLZd9gvvvUCW1vYFHRw/6ogch+wFnbRtmkAoHKCB3RO4ltvvJc8VSBTwbpB9NJykjwkapfWAkAMXXFyHenOYH//yoU6kfVO3dRFcbgezVGbtK9PFkdu5dXvuE6Biz0/r8/WXzcTSCUAaBuQ5vOruXHOOC7aa8Fi0vbkU5G09kz2fPdOFTXNOh37qltqc6S9+0dfc4h6tDT95wIzPR0VqUas/TxSnSq5ssSwtFa+ssEh2Ncj/WWsYWWeAIcVeJe18vVK7k1r9a20YLB0DDBC0bZA=
       app: automatedcx-api-staging
       on:
         repo: AutomatedCX/automatedcx-api
         branch: staging
       run:
-        - bundle exec rails db:migrate RAILS_ENV=production
+      - bundle exec rails db:migrate RAILS_ENV=production
   - stage: test staging
     script: curl https://automatedcx-api-staging.herokuapp.com/ping
   - stage: deploy to production
@@ -48,7 +48,6 @@ jobs:
         branch: master
         tags: true
       run:
-        - bundle exec rails db:migrate RAILS_ENV=production
+      - bundle exec rails db:migrate RAILS_ENV=production
   - stage: test production
     script: curl https://automatedcx-api-production.herokuapp.com
-
