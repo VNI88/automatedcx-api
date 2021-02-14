@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   post 'notifications', to: 'notifications#new'
 
   namespace :chatbot do
-    post 'dialog_flow', to: 'dialog_flowr#create'
+    get 'dialog_flow', to: 'dialog_flow#show'
+    post 'dialog_flow', to: 'dialog_flow#create'
     post 'whatsapp', to: 'whatsapp#create'
   end
 end

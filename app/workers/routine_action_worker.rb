@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'sidekiq'
-require_relative '../../lib/whatsapp_message_sender.rb'
 
 class RoutineActionWorker
   include Sidekiq::Worker
@@ -16,7 +15,7 @@ class RoutineActionWorker
         metadata = JSON.parse(event_metadata(routine))
         metadata['users'].map { |user|
           message_body = "Hello #{user['name']},\n #{routine.message_template}"
-          WhatsappMessageSender.new.send_message(user['phone'], message_body)
+          Whatsapp.new(user['phone'], message_body).call
         }
       when 'send_email'
         # TO DO create a mailer with this function

@@ -65,7 +65,8 @@ Rails.application.configure do
   end
 
   config.webpacker.check_yarn_integrity = false
-
+  # config.assets.debug = false
+  # config.hosts << "5ec8004e0fec.ngrok.io"
   # Devise configuration
   config.action_mailer.default_url_options = { host: ENV['STG_HOST'] }
 
