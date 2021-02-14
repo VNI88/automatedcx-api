@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.openweathermap.org/data/2.5/weather?APPID=75db7d873c19497483813b8f5687291d&lang=pt_br&q=,Aracaju,%20BR&units=metric
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.openweathermap.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Sat, 16 Jan 2021 01:48:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '462'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?APPID=75db7d873c19497483813b8f5687291d&lang=pt_br&q=%2caracaju%2c+br&units=metric"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-35.6833,"lat":-7.1},"weather":[{"id":802,"main":"Clouds","description":"nuvens
+        dispersas","icon":"03n"}],"base":"stations","main":{"temp":23,"feels_like":22.82,"temp_min":23,"temp_max":23,"pressure":1013,"humidity":88},"visibility":10000,"wind":{"speed":6.17,"deg":100},"clouds":{"all":40},"dt":1610761681,"sys":{"type":1,"id":8392,"country":"BR","sunrise":1610698644,"sunset":1610743595},"timezone":-10800,"id":3384868,"name":"Zumbi","cod":200}'
+    http_version: 
+  recorded_at: Sat, 16 Jan 2021 01:48:04 GMT
+- request:
+    method: get
+    uri: http://api.openweathermap.org/data/2.5/weather?APPID=75db7d873c19497483813b8f5687291d&lang=pt_br&q=,Aracaju,%20BR&units=metric
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.openweathermap.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Sat, 16 Jan 2021 01:48:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '462'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?APPID=75db7d873c19497483813b8f5687291d&lang=pt_br&q=%2caracaju%2c+br&units=metric"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-35.6833,"lat":-7.1},"weather":[{"id":802,"main":"Clouds","description":"nuvens
+        dispersas","icon":"03n"}],"base":"stations","main":{"temp":23,"feels_like":22.82,"temp_min":23,"temp_max":23,"pressure":1013,"humidity":88},"visibility":10000,"wind":{"speed":6.17,"deg":100},"clouds":{"all":40},"dt":1610761684,"sys":{"type":1,"id":8392,"country":"BR","sunrise":1610698644,"sunset":1610743595},"timezone":-10800,"id":3384868,"name":"Zumbi","cod":200}'
+    http_version: 
+  recorded_at: Sat, 16 Jan 2021 01:48:07 GMT
+recorded_with: VCR 3.0.3

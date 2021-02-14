@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     root to: 'landing_page#index'
   end
 
-
   authenticate :user do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     mount Sidekiq::Web => '/sidekiq'
@@ -26,4 +25,10 @@ Rails.application.routes.draw do
 
   post 'messages',      to:'messages#new'
   post 'notifications', to: 'notifications#new'
+
+  namespace :chatbot do
+    get 'dialog_flow', to: 'dialog_flow#show'
+    post 'dialog_flow', to: 'dialog_flow#create'
+    post 'whatsapp', to: 'whatsapp#create'
+  end
 end

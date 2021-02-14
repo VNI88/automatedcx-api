@@ -1,5 +1,4 @@
 require 'test_helper'
-require_relative '../../../lib/bot/telegram_app'
 
 class TelegramAppTest < ActiveSupport::TestCase
  def setup
