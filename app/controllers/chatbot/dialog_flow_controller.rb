@@ -31,7 +31,6 @@ class Chatbot::DialogFlowController < ApplicationController
       chat_id = params['originalDetectIntentRequest']['payload']['data']['chat']['id']
       MessageSender::Telegram.new(chat_id, message).call
     when 'facebook'
-      sender_id = params['originalDetectIntentRequest']['payload']['data']['sender']['id']
       messenger_response = {
         fulfillmentMessages: [
           {
