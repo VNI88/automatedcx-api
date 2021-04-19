@@ -10,6 +10,7 @@ module Consulter
 
     def call
       result = GoogleCustomSearchApi.search(@theme)
+      puts result
       OpenStruct.new({ success?: true, payload: formatted_result(result) })
     rescue StandardError => e
       Raven.capture_exception(e)

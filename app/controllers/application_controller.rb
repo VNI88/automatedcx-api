@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
              else
                Consulter::Google.new(theme).call
              end
-
+    puts result
     if result[:success?]
       Rails.logger.info(google_consulter_formatted_response(result[:payload]))
       return google_consulter_formatted_response(result[:payload])
