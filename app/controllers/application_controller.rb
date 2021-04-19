@@ -91,6 +91,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_theme
+    puts params[:queryResult][:parameters]
     if params.keys.include?(:queryResult)
       params[:queryResult][:parameters]['theme']
     end
