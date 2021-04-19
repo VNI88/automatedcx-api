@@ -9,6 +9,7 @@ module Consulter
     end
 
     def call
+      puts @theme
       result = GoogleCustomSearchApi.search(@theme)
       puts result
       OpenStruct.new({ success?: true, payload: formatted_result(result) })
