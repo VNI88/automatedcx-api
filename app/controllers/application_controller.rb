@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
       return google_consulter_formatted_response(result[:payload])
     else
       Rails.logger.info(result[:error])
-      return  'Sorry an error occured'
+      return  "Sorry an error occured #{result[:error]}"
     end
   end
 
