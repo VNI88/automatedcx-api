@@ -79,6 +79,7 @@ gem 'open-weather'
 gem "google_custom_search_api"
 # Use to manage credentials
 gem "figaro"
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
