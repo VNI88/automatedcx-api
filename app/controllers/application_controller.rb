@@ -60,13 +60,13 @@ class ApplicationController < ActionController::Base
              else
                Consulter::Google.new(theme).call
              end
-    puts result
+
     if result[:success?]
       Rails.logger.info(google_consulter_formatted_response(result[:payload]))
       return google_consulter_formatted_response(result[:payload])
     else
       Rails.logger.info(result[:error])
-      return  "Sorry an error occured #{result[:error]}"
+      return  "Sorry an error occured"
     end
   end
 
@@ -91,8 +91,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_theme
-    puts params[:queryResult][:parameters]
-    if params.keys.include?(:queryResult)
+    if params.keys.include?('queryResult')
       params[:queryResult][:parameters]['theme']
     end
   end
