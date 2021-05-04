@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_weather(location_provided_by_whatsapp=nil)
-    location_provided_by_other_source = if params.keys.include?(:queryResult)
+    location_provided_by_other_source = if params.keys.include?('queryResult')
                                           params[:queryResult][:parameters]['location']
                                         end
 
