@@ -1,13 +1,17 @@
+# frozen_string_literal: true
+
 RailsAdmin.config do |config|
   require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ExportPdf)
+
   ### Popular gems integration
 
   ## == Devise ==
-   config.authenticate_with do
-     warden.authenticate! scope: :user
-   end
-   config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
   config.authorize_with :cancancan
@@ -26,13 +30,14 @@ RailsAdmin.config do |config|
 
   config.navigation_static_links = {
     'Routine Details' => ENV['SIDEKIQ_URL'] || 'localhost:3000/sidekiq',
-    'Api Docs' => ENV['SWAGGER_URL'] || 'localhost:3000/api-docs'
+    'Api Docs' => ENV['SWAGGER_URL'] || 'localhost:3000/api-docs',
+    'Update your plan!' => '/billing'
   }
   config.parent_controller = 'ApplicationController'
 
   config.actions do
     dashboard
-    index                         # mandatory
+    index # mandatory
     new
     export
     bulk_delete

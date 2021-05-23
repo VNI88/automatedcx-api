@@ -1,9 +1,14 @@
+# frozen_string_literal: true
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'billing', to: 'billing#show'
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   devise_scope :user do
     root to: 'landing_page#index'
   end
@@ -23,7 +28,7 @@ Rails.application.routes.draw do
   get 'ping',     to: 'ping#show'
   get 'version',  to: 'version#show'
 
-  post 'messages',      to:'messages#new'
+  post 'messages',      to: 'messages#new'
   post 'notifications', to: 'notifications#new'
 
   namespace :chatbot do

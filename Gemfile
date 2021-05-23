@@ -55,7 +55,7 @@ gem 'gruff'
 # gem 'image_processing', '~> 1.2'
 # Use to present dynamic charts
 gem 'rails_admin_charts'
-gem "highcharts-rails"
+gem 'highcharts-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 # Use to validate the status of our services
@@ -67,23 +67,29 @@ gem 'telegram-bot-ruby'
 # Use to save requests to third party apps
 gem 'vcr', '~> 3.0', '>= 3.0.1'
 # Used to mock requests
-gem 'webmock'
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'webmock'
 # Use to make researches on wikipedia
-gem "wikipedia-client"
+gem 'wikipedia-client'
 # Use to communicate with facebook messenger
-gem "facebook-messenger"
+gem 'facebook-messenger'
 # Use to check weather
 gem 'open-weather'
 # Use to make research on google
-gem "google_custom_search_api"
+gem 'google_custom_search_api'
 # Use to manage credentials
-gem "figaro"
+gem 'figaro'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+# Use to be able to pay for automated_cx_api
+gem 'pay', '~> 2.0'
+# To use Stripe, also include:
+gem 'stripe', '< 6.0', '>= 2.8'
+# To use Receipts
+gem 'receipts', '~> 1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'irb'
   gem 'rspec-rails'
   gem 'rswag-specs'
@@ -103,9 +109,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'timecop', '~> 0.8.1'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_233304) do
+ActiveRecord::Schema.define(version: 2021_05_23_144011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,30 @@ ActiveRecord::Schema.define(version: 2020_09_01_233304) do
     t.bigint "attendant_id", null: false
     t.integer "interactions_count", default: 0
     t.jsonb "client_data"
-    t.datetime "started_at", default: "2020-06-23 15:17:53"
-    t.datetime "updated_at", default: "2020-06-23 15:17:53"
+    t.datetime "started_at", default: "2020-06-25 03:23:32"
+    t.datetime "updated_at", default: "2020-06-25 03:23:32"
     t.datetime "finished_at"
+  end
+
+  create_table "companies", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "pricing_id", null: false
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
+    t.string "email"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "started_at", default: "2020-06-23 02:31:21"
+    t.datetime "started_at", default: "2020-06-25 03:23:32"
     t.datetime "finished_at"
     t.string "name", null: false
     t.string "category", null: false
@@ -45,11 +61,51 @@ ActiveRecord::Schema.define(version: 2020_09_01_233304) do
     t.datetime "created_at"
   end
 
+  create_table "pay_charges", id: :serial, force: :cascade do |t|
+    t.string "owner_type"
+    t.integer "owner_id"
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.integer "amount", null: false
+    t.integer "amount_refunded"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.jsonb "data"
+    t.string "currency"
+  end
+
+  create_table "pay_subscriptions", id: :serial, force: :cascade do |t|
+    t.string "owner_type"
+    t.integer "owner_id"
+    t.string "name", null: false
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.string "processor_plan", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "trial_ends_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "status"
+    t.jsonb "data"
+  end
+
+  create_table "pricings", id: :serial, force: :cascade do |t|
+    t.string "plan", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "routines", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "status", default: "unscheduled", null: false
-    t.datetime "started_at", default: "2020-06-23 15:17:53"
-    t.datetime "updated_at", default: "2020-06-23 15:17:53"
+    t.datetime "started_at", default: "2020-06-25 03:23:32"
+    t.datetime "updated_at", default: "2020-06-25 03:23:32"
     t.datetime "finished_at"
     t.string "action"
     t.bigint "user_id"
@@ -81,7 +137,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_233304) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "company_name", null: false
+    t.bigint "company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["id"], name: "index_users_on_id"
@@ -90,6 +146,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_233304) do
 
   add_foreign_key "attendants", "users"
   add_foreign_key "attendences", "attendants"
+  add_foreign_key "companies", "pricings"
   add_foreign_key "events", "users"
   add_foreign_key "routines", "users"
+  add_foreign_key "users", "companies"
 end

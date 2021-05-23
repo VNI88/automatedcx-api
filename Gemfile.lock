@@ -240,6 +240,8 @@ GEM
     open-weather (0.12.0)
       json (~> 1)
     orm_adapter (0.5.0)
+    pay (2.6.11)
+      rails (>= 4.2)
     pdf-core (0.8.1)
     pg (0.18.4)
     prawn (2.3.0)
@@ -301,6 +303,9 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    receipts (1.0.4)
+      prawn (>= 1.3.0, < 3.0.0)
+      prawn-table (~> 0.2.1)
     redis (4.2.1)
     regexp_parser (1.7.1)
     reline (0.1.4)
@@ -379,6 +384,7 @@ GEM
       sprockets (>= 3.0.0)
     status-page (0.1.5)
       rails (>= 4.2)
+    stripe (5.32.1)
     telegram-bot-ruby (0.13.0)
       faraday
       inflecto
@@ -462,6 +468,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mimemagic!
   open-weather
+  pay (~> 2.0)
   pg (~> 0.18.4)
   prawn-rails
   puma (~> 4.1)
@@ -469,6 +476,7 @@ DEPENDENCIES
   rails_admin!
   rails_admin_charts
   rails_admin_rollincode (~> 1.0)
+  receipts (~> 1.0.0)
   redis (~> 4.0)
   remotipart!
   rmagick (~> 4.1.2)
@@ -484,6 +492,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   status-page
+  stripe (>= 2.8, < 6.0)
   telegram-bot-ruby
   timecop (~> 0.8.1)
   turbolinks (~> 5)

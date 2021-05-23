@@ -9,16 +9,18 @@ class Ability
       can :read, :dashboard
 
       if user.role == 'developer'
-        can [:create, :read, :update, :export], Event, user_id: user.id
+        can %i[create read update export], Event, user_id: user.id
         can :manage, Routine, user_id: user.id
-        can :read, User, company_name: user.company_name
+        can :read, User, company_id: user.company_id
       elsif user.role == 'analyst'
-        can [:read, :export], [Routine, Event], user: { company_name: user.company_name }
-        can [:read, :export], User, company_name: user.company_name
+        can %i[read export], [Routine, Event], user: { company_id: user.company_id }
+        can %i[read export], User, user: { company_id: user.company_id }
+        can :read, Company, id: user.company.id
       elsif user.role == 'admin'
-        can :manage, [ Routine, Event], user: { company_name: user.company_name }
-        can :manage, User, company_name: user.company_name
-      elsif user.role == 'admin' && user.company_name == 'AutomatedCX'
+        can :manage, [Routine, Event], user: { company_id: user.company_id }
+        can :manage, User, company_id: user.company.id
+        can :manage, Company, id: user.company.id
+      elsif user.role == 'admin' && user.company&.name == 'AutomatedCX'
         can :manage, :all
       end
     end

@@ -32,7 +32,7 @@ module Pdf
           pdf.text "Unscheduled Routines", :size => 14, :align => :justify, :inline_format => true, :style => :bold
           pdf.move_down 14
 
-          unscheduled_routines = Routine.based_on_company_name(@current_user.company_name, :unscheduled)
+          unscheduled_routines = Routine.based_on_company_name(@current_user.company.name, :unscheduled)
 
           unscheduled_routines.each do |routine|
             pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
@@ -48,7 +48,7 @@ module Pdf
           pdf.text "Scheduled Routines", :size => 14, :align => :justify, :inline_format => true, :style => :bold
           pdf.move_down 14
 
-          scheduled_routines = Routine.based_on_company_name(@current_user.company_name, :scheduled)
+          scheduled_routines = Routine.based_on_company_name(@current_user.company.name, :scheduled)
 
           scheduled_routines.each do |routine|
             pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
@@ -63,7 +63,7 @@ module Pdf
           pdf.text "Completed Routines", :size => 14, :align => :justify, :inline_format => true, :style => :bold
           pdf.move_down 14
 
-          completed_routines = Routine.based_on_company_name(@current_user.company_name, :completed)
+          completed_routines = Routine.based_on_company_name(@current_user.company.name, :completed)
 
           completed_routines.each do |routine|
             pdf.text "Id #{routine.id}, Name - #{routine.name}, Monitored event - #{routine.monitored_event}, Monitoring criteria - #{routine.monitoring_criteria} , Starts at #{routine.starts_at.strftime("%d/%m/%y at %H:%M")}",
@@ -75,7 +75,7 @@ module Pdf
           pdf.text "Total - #{completed_routines.count}", :size => 12, :align => :justify, :inline_format => true
           pdf.move_down 20
 
-          routines = Routine.based_on_company_name(@current_user.company_name, %i[unscheduled scheduled completed])
+          routines = Routine.based_on_company_name(@current_user.company.name, %i[unscheduled scheduled completed])
           pdf.text "Number of registered Routines - #{routines.count}", :size => 14, :align => :justify, :inline_format => true, :style => :bold
           pdf.move_down 20
 

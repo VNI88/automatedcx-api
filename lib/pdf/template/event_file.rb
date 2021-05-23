@@ -32,7 +32,7 @@ module Pdf
           pdf.text "Last 50 Events", :size => 14, :align => :justify, :inline_format => true, :style => :bold
           pdf.move_down 14
 
-          company_events = Event.based_on_company_name_with_filter(@current_user.company_name)
+          company_events = Event.based_on_company_name_with_filter(@current_user.company.name)
 
           company_events.limit(50).each do |event|
             pdf.text %Q{ Id #{event.id}, Category - #{event.category}, Name - #{event.event_name},\n
@@ -51,7 +51,7 @@ module Pdf
           categories_chart = Gruff::Pie.new 900
           categories_chart.theme = Gruff::Themes::PASTEL
 
-          company_events.group(:category).count(:category).map do|category_name, category_occurences|
+          company_events.group(:category).count(:category).map do |category_name, category_occurences|
             categories_chart.data(category_name, category_occurences)
           end
 

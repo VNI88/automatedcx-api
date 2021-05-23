@@ -10,18 +10,18 @@ class Event < ApplicationRecord
   }
 
   scope :new_users, lambda {
-    where( name: 'new_user')
+    where(name: 'new_user')
   }
 
   def previous_event_id
-    self.previous_event_id = Event.where(user_id: self.user_id)
-                                  .where(name: self.previous_event_name)
-                                  .where(category: self.category).last&.id
+    self.previous_event_id = Event.where(user_id: user_id)
+                                  .where(name: previous_event_name)
+                                  .where(category: category).last&.id
   end
 
   scope :based_on_company_name, lambda { |company_name|
-    joins(:user)
-      .where('users.company_name = ?', company_name)
+    joins(user: :company)
+      .where('companies.name = ?', company_name)
   }
 
   def self.based_on_company_name_with_filter(company_name)
@@ -35,8 +35,8 @@ class Event < ApplicationRecord
   end
 
   def self.graph_data(_since = 30.days.ago)
-    company_name = User.current.company_name
-    self.based_on_company_name(company_name).group(:name).count.to_a
+    company_name = User.current.company.name
+    based_on_company_name(company_name).group(:name).count.to_a
   end
 
   def self.chart_type

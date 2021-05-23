@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -8,8 +10,8 @@ Bundler.require(*Rails.groups)
 ENV['RAILS_ADMIN_THEME'] = 'rollincode'
 
 module AutomatedcxApi
+  # Initialize configuration defaults for originally generated Rails version.
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults '6.0'
     config.autoload_paths << Rails.root.join('app', 'lib', 'modules')
 
@@ -21,13 +23,5 @@ module AutomatedcxApi
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    # if Rails.env.test?
-      # Update version file from latest git tag
-      # File.open('config/version', 'w') do |file|
-        # file.write `git describe --tags`
-      # end
-    # end
-
-    # config.application_version = File.read('config/version')
   end
 end
