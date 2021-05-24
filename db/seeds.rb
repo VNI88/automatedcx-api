@@ -3,5 +3,17 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# Character.create(name: 'Luke', movie: movies.first)
+
+pricing = Pricing.create!(
+  plan: :trial,
+  price: 0
+)
+
+Company.create!(
+  name: 'Acx',
+  email: 'automatedcx_api@gmail.com',
+  plan: :trial,
+  pricing_id: pricing.id
+)
