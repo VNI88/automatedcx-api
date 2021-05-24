@@ -7,7 +7,7 @@
 acx:
   name: 'ACX'
   email: 'acx_test@natura.com'
-  pricing:
+  pricing_id: one
 
 # two: {}
 # column: value
