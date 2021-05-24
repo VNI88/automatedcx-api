@@ -4,14 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-natura_user:
-  name: 'Vinicius'
-  email: 'vini_test@natura.com'
-  role: 'tester'
-  encrypted_password: 'testpass'
-  api_key: "JWgugqs5Mc7uJfyWjzGW"
-  confirmed_at: "2020-08-08 00:49:56"
-  company_id: acx
+acx:
+  name: 'ACX'
+  email: 'acx_test@natura.com'
+  pricing:
 
 # two: {}
 # column: value
