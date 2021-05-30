@@ -2,9 +2,9 @@
 
 require 'twilio-ruby'
 
-# This class is responsible for sending whatsapp messages
-# when a routine trigger gets actioned
 module MessageSender
+  # This class is responsible for sending whatsapp messages
+  # when a routine trigger gets actioned
   class Whatsapp
     def initialize(recipient_phone_number, message)
       @client = Twilio::REST::Client.new(ENV['ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
@@ -13,26 +13,37 @@ module MessageSender
     end
 
     def call
-      begin
-        message = @client.messages.create(
-          body: @message,
-          to: "whatsapp:#{@recipient_phone_number}",
-          from: "whatsapp: +14155238886"
-        )
+      twilio_response = send_message
+      Rails.logger.info(twilio_response.sid)
+      service_response
+    rescue MessageSender::WhatsappError => e
+      Raven.capture_exception(e)
+      Rails.logger.error(e)
+      OpenStruct.new({ success?: false, error: e })
+    end
 
-        Rails.logger.info(message.sid)
-        OpenStruct.new({
+    private
+
+    def send_message
+      @client.messages.create(
+        body: @message,
+        to: "whatsapp:#{@recipient_phone_number}",
+        from: 'whatsapp: +14155238886'
+      )
+    end
+
+    def service_response
+      OpenStruct.new(
+        {
           success: true,
           payload: {
             recipient_phone_number: @recipient_phone_number,
             message: @message
           }
-        })
-      rescue StandardError => error
-        Raven.capture_exception(error)
-        Rails.logger.error(error)
-        OpenStruct.new({ success?: false, error: error })
-      end
+        }
+      )
     end
   end
+
+  class WhatsappError < StandardError; end
 end

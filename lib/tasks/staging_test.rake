@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :staging_test do
- desc "Create an user for Natura presentation"
+  desc 'Create an user for Natura presentation'
   task create_user: :environment do
     User.create!(
       name: 'Test user',
@@ -12,15 +14,15 @@ namespace :staging_test do
     )
   end
 
-  desc "Create an event for Natura presentation"
+  desc 'Create an event for Natura presentation'
   task create_event: :environment do
     user_metadata = {
-     users: [
-      { name: 'Vinicius', phone: '+5511998436963'},
-      { name: 'William',  phone: '+5511956188884'},
-      { name: 'Rafael',   phone: '+5511974107341'},
-      { name: 'Nicolas',  phone: '+5511962697679'}
-     ]
+      users: [
+        { name: 'Vinicius', phone: '+5511998436963' },
+        { name: 'William',  phone: '+5511956188884' },
+        { name: 'Rafael',   phone: '+5511974107341' },
+        { name: 'Nicolas',  phone: '+5511962697679' }
+      ]
     }
 
     Event.create!(
@@ -34,7 +36,7 @@ namespace :staging_test do
     )
   end
 
-  desc "Create a routine to monitor the previously created event"
+  desc 'Create a routine to monitor the previously created event'
   task create_routine: :environment do
     Routine.create!(
       name: 'test_routine',
@@ -51,8 +53,8 @@ namespace :staging_test do
     )
   end
 
-  desc "Schedule the routine "
+  desc 'Schedule the routine '
   task schedule_routine: :environment do
-    RoutineSchedulerWorker.perform_in(1.second)
+    Routines::SchedulerWorker.perform_in(1.second)
   end
 end

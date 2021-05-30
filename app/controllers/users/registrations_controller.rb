@@ -11,11 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    Company.create!(name: params[:company][:name], email: params[:company][:email])
+    company = Company.find_or_create_by(name: params[:company][:name], email: params[:company][:email])
+    SubscriptionWorker.perform_async(company.id)
+    debugger
     super
-    redirect_to root
-  rescue StandardError => e
-    Raven.capture_exception(e)
   end
 
   # GET /resource/edit

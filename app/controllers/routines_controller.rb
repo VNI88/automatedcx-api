@@ -6,19 +6,17 @@ class RoutinesController < ApplicationController
   before_action :validate_routine_params, only: %i[show update destroy]
 
   def create
-    begin
-      Routine.create!(
-        user_id: current_user.id,
-        name: params[:name],
-        action: params[:action],
-        starts_at: params[:starts_at],
-        periodicity: params[:periodicity],
-        monitoring_criteria: params[:monitoring_criteria],
-        monitored_event: params[:monitored_event]
-      )
-    rescue StandardError => error
-      Raven.capture_exception(error)
-    end
+    Routine.create!(
+      user_id: current_user.id,
+      name: params[:name],
+      action: params[:action],
+      starts_at: params[:starts_at],
+      periodicity: params[:periodicity],
+      monitoring_criteria: params[:monitoring_criteria],
+      monitored_event: params[:monitored_event]
+    )
+  rescue StandardError => e
+    Raven.capture_exception(e)
   end
 
   def index
@@ -31,15 +29,15 @@ class RoutinesController < ApplicationController
 
   def update
     Routine.find_by(id: params[:id])
-           .update!(
-             name: params[:name],
-             status: params[:status],
-             action: params[:action],
-             starts_at: params[:starts_at],
-             periodicity: params[:periodicity],
-             monitoring_criteria: params[:monitoring_criteria],
-             monitored_event: params[:monitored_event]
-            )
+      .update!(
+        name: params[:name],
+        status: params[:status],
+        action: params[:action],
+        starts_at: params[:starts_at],
+        periodicity: params[:periodicity],
+        monitoring_criteria: params[:monitoring_criteria],
+        monitored_event: params[:monitored_event]
+    )
   end
 
   def destroy
