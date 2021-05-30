@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     company = Company.find_or_create_by(name: params[:company][:name], email: params[:company][:email])
     SubscriptionWorker.perform_async(company.id)
-    debugger
     super
   end
 
