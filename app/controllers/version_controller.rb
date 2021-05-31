@@ -2,6 +2,6 @@
 
 class VersionController < ApplicationController
   def show
-    render plain: 'v7.1.2'
+    render plain: 'v7.2.0'
   end
 end

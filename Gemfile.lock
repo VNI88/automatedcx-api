@@ -136,6 +136,8 @@ GEM
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     e2mmap (0.1.0)
     equalizer (0.0.11)
     erubi (1.10.0)
@@ -170,6 +172,9 @@ GEM
     highcharts-rails (6.0.3)
       railties (>= 3.1)
     histogram (0.2.4.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -221,6 +226,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailgun-ruby (1.2.4)
+      rest-client (>= 2.0.2)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
@@ -239,6 +246,7 @@ GEM
       net-protocol
       time
     net-protocol (0.1.0)
+    netrc (0.11.0)
     nio4r (2.5.2)
     nokogiri (1.11.6)
       mini_portile2 (~> 2.5.0)
@@ -320,6 +328,11 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rmagick (4.1.2)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -418,6 +431,9 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     vcr (3.0.3)
     virtus (1.0.5)
       axiom-types (~> 0.1)
@@ -474,6 +490,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mailgun-ruby (~> 1.2.4)
   mimemagic!
   open-weather
   pay (~> 2.0)

@@ -62,6 +62,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'status-page'
 # Use to run all third-party services
 gem 'foreman'
+# Use to send emails
+gem 'mailgun-ruby', '~>1.2.4'
 # Adding gem for telegram bot
 gem 'telegram-bot-ruby'
 # Use to save requests to third party apps

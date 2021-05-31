@@ -70,16 +70,11 @@ Rails.application.configure do
   # Devise configuration
   config.action_mailer.default_url_options = { host: ENV['STG_HOST'] }
 
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  ActionMailer::Base.smtp_settings = {
-     :user_name => ENV['MAILGUN_USER'],
-     :password =>  ENV['MAILGUN_PASS'],
-     :address => 'smtp.mailgun.org',
-     :domain => 'sandbox083f71853d484579a00b513be49512d8.mailgun.org',
-     :port => 587,
-     :authentication => :plain,
-     :enable_starttls_auto => true
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAILGUN_API_KEY'],
+    domain: ENV['MAILGUN_DOMAIN']
   }
 end
