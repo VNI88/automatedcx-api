@@ -120,11 +120,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
+  ActionMailer::Base.mailgun_settings = {
     api_key: ENV['MAILGUN_API_KEY'],
     domain: ENV['MAILGUN_DOMAIN'],
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
+    port: '587'
   }
 end
