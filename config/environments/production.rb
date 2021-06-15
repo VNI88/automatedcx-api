@@ -123,6 +123,8 @@ Rails.application.configure do
   config.action_mailer.mailgun_settings = {
     api_key: ENV['MAILGUN_API_KEY'],
     domain: ENV['MAILGUN_DOMAIN'],
-    port: 587
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 end
