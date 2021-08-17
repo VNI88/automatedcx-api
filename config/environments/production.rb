@@ -119,10 +119,15 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :mailgun
-  ActionMailer::Base.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'],
+  config.mailer_sender = '"AutomatedCX Team" '
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
     domain: ENV['MAILGUN_DOMAIN'],
-    port: '587'
-  }
+    address: ENV['MAILGUN_HOSTNAME'],
+    user_name: ENV['MAILGUN_USER'],
+    password: ENV['MAILGUN_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true,
+    port: 587
+  }.symbolize_keys
 end
