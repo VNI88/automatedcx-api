@@ -7,8 +7,9 @@ on:
   push:
     branches:
       - master
+      - staging
     tags:
-      - '*'
+      - v.* 
 jobs:
   Test:
     runs-on: ubuntu-latest
