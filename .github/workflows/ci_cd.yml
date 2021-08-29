@@ -74,9 +74,8 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       - name: Deploy to Production
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "automatedcx-api-production" #Must be unique in Heroku
@@ -86,7 +85,7 @@ jobs:
             branch: "master"
 
       - name: Deploy to Staging
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "automatedcx-api-staging" #Must be unique in Heroku
