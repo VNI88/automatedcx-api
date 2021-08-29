@@ -71,11 +71,10 @@ jobs:
           bin/rails db:test:prepare
           bin/rails test
   Deploy:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-    needs: Test
-    runs-on: ubuntu-latest
-
     steps:
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      needs: Test
+      runs-on: ubuntu-latest
       - uses: actions/checkout@master
       - name: Deploy To Heroku Production
         uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
@@ -84,11 +83,10 @@ jobs:
           heroku_app_name: "automatedcx-api-production" #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
 
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/staging' }}
-    needs: Test
-    runs-on: ubuntu-latest
-
     steps:
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/staging' }}
+      needs: Test
+      runs-on: ubuntu-latest
       - uses: actions/checkout@staging
       - name: Deploy To Heroku Staging
         uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
