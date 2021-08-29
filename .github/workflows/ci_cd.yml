@@ -74,6 +74,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       - name: Deploy to Production
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
