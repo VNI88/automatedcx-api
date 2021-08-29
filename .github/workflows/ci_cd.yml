@@ -74,6 +74,7 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
