@@ -71,7 +71,22 @@ jobs:
           bin/rails db:test:prepare
           bin/rails test
   
-  Deploy:
+  Deploy To Staging:
+    runs-on: ubuntu-latest
+    needs: Test
+    steps:
+      - uses: actions/checkout@master
+      - name: Deploy to Heroku
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "automatedcx-api-staging" #Must be unique in Heroku
+            heroku_email: ${{secrets.HEROKU_EMAIL}}
+            healthcheck: "https://automatedcx-api-staging.herokuapp.com/ping"
+            rollbackonhealthcheckfailed: true
+            branch: "staging"
+            
+  Deploy To Production:
     runs-on: ubuntu-latest
     needs: Test
     steps:
@@ -85,15 +100,7 @@ jobs:
             healthcheck: "https://automatedcx-api-production.herokuapp.com/ping"
             rollbackonhealthcheckfailed: true
             branch: "master"
-      
-      - name: Deploy to Heroku
-        uses: AkhileshNS/heroku-deploy@v3.12.12
-        with:
-            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-            heroku_app_name: "automatedcx-api-staging" #Must be unique in Heroku
-            heroku_email: ${{secrets.HEROKU_EMAIL}}
-            healthcheck: "https://automatedcx-api-staging.herokuapp.com/ping"
-            rollbackonhealthcheckfailed: true
-            branch: "staging"
+
+
 
   
