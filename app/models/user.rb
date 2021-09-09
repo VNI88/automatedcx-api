@@ -15,6 +15,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  has_paper_trail
+
   has_many :events
   has_many :routines
   has_one :attendant
