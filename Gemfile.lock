@@ -391,6 +391,10 @@ GEM
       sidekiq (>= 3)
       thwait
       tilt (>= 1.4.0)
+    sorbet (0.5.6205)
+      sorbet-static (= 0.5.6205)
+    sorbet-runtime (0.5.6205)
+    sorbet-static (0.5.6205-x86_64-linux)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -514,6 +518,8 @@ DEPENDENCIES
   sentry-raven
   sidekiq
   sidekiq-scheduler
+  sorbet
+  sorbet-runtime
   spring
   spring-watcher-listen (~> 2.0.0)
   status-page

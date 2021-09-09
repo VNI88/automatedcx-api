@@ -1,3 +1,4 @@
+# typed: false
 class Chatbot::WhatsappController < ApplicationController
  # before_action :allow_twilio_webhook
  skip_before_action :verify_authenticity_token

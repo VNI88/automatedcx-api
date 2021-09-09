@@ -1,3 +1,4 @@
+# typed: false
 require 'swagger_helper'
 
 RSpec.describe "version_controller", type: :request do

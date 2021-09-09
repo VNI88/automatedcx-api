@@ -1,3 +1,4 @@
+# typed: true
 module ApplicationHelper
   def resource_name
     :user

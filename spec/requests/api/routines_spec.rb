@@ -1,3 +1,4 @@
+# typed: false
 require 'swagger_helper'
 
 RSpec.describe "routines_controller", type: :request do

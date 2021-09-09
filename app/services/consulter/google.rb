@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 # This class is responsible to make a research on Google

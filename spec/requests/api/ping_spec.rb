@@ -1,3 +1,4 @@
+# typed: false
 require 'swagger_helper'
 
 RSpec.describe "ping_controller", type: :request do

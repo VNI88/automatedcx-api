@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # It centralize all base methods used by the controllers
