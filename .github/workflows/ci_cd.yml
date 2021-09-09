@@ -71,7 +71,7 @@ jobs:
         run: |
           bin/rails db:test:prepare
           bin/rails test
-  
+
   Deploy-To-Staging:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/staging' }}
     runs-on: ubuntu-latest
@@ -85,9 +85,10 @@ jobs:
             heroku_app_name: "automatedcx-api-staging" #Must be unique in Heroku
             heroku_email: ${{secrets.HEROKU_EMAIL}}
             healthcheck: "https://automatedcx-api-staging.herokuapp.com/ping"
+            procfile: "release: rails db:migrate"
             rollbackonhealthcheckfailed: true
             branch: "staging"
-            
+
   Deploy-To-Production:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
@@ -101,6 +102,7 @@ jobs:
             heroku_app_name: "automatedcx-api-production" #Must be unique in Heroku
             heroku_email: ${{secrets.HEROKU_EMAIL}}
             healthcheck: "https://automatedcx-api-production.herokuapp.com/ping"
+            procfile: "release: rails db:migrate"
             rollbackonhealthcheckfailed: true
             branch: "master"
 
