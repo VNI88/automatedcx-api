@@ -1,3 +1,4 @@
+# typed: true
 class AddPeriodicityToRoutines < ActiveRecord::Migration[6.0]
   def change
     add_column :routines, :periodicity, :string, null: false

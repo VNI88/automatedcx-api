@@ -1,3 +1,4 @@
+# typed: true
 # This migration comes from pay (originally 20170727235816)
 class CreatePayCharges < ActiveRecord::Migration[4.2]
   def change

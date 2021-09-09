@@ -1,3 +1,4 @@
+# typed: true
 class AddPlansToPricings < ActiveRecord::Migration[6.0]
   def change
     Pricing.create!([{ plan: :trial, price: 0 },

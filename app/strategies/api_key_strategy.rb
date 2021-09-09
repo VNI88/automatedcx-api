@@ -1,3 +1,4 @@
+# typed: true
 class ApiKeyStrategy < Warden::Strategies::Base
   def valid?
     api_key.present?

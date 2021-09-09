@@ -1,3 +1,4 @@
+# typed: false
 require 'test_helper'
 
 class VersionControllerTest < ActionDispatch::IntegrationTest

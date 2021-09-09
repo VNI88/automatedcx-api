@@ -88,9 +88,10 @@ gem 'pay', '~> 2.0'
 gem 'stripe', '< 6.0', '>= 2.8'
 # To use Receipts
 gem 'receipts', '~> 1.0.0'
-
+gem 'sorbet-runtime'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sorbet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'irb'
   gem 'rspec-rails'

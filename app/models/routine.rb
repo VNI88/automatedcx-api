@@ -1,3 +1,4 @@
+# typed: true
 class Routine < ApplicationRecord
   include RailsAdminCharts
   belongs_to :user

@@ -1,3 +1,4 @@
+# typed: true
 class CreatePricings < ActiveRecord::Migration[6.0]
   def change
     create_table :pricings, id: :serial do |t|

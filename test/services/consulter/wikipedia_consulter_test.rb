@@ -1,3 +1,4 @@
+# typed: false
 require 'test_helper'
 
 class Consulter::WikipediaTest < ActiveSupport::TestCase

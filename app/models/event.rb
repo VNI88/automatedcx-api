@@ -1,3 +1,4 @@
+# typed: false
 class Event < ApplicationRecord
   include RailsAdminCharts
   belongs_to :user
