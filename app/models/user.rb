@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_one :attendant
   belongs_to :company, optional: true
 
-  validates :name, presence: true, length: { maximum: 5 }
+  validates :name, presence: true, length: { maximum: 20 }
   validates :encrypted_password, presence: true, length: { minimum: 8 }
   validates :role, presence: true
   VALID_EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i.freeze
