@@ -84,6 +84,7 @@ gem 'figaro'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 gem 'paper_trail'
 gem 'rails_admin_history_rollback'
+gem 'remote_syslog_logger'
 
 # Use to be able to pay for automated_cx_api
 gem 'pay', '~> 2.0'
