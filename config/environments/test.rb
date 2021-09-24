@@ -37,6 +37,14 @@ Rails.application.configure do
   config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
+
+  require 'remote_syslog_logger'
+  config.logger = ActiveSupport::TaggedLogging.new(
+    RemoteSyslogLogger.new(
+      'logs3.papertrailapp.com', 30094,
+      :program => "rails-#{Rails.env}"
+    )
+  )
   # config.logger = Logger.new(STDOUT)
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the

@@ -81,6 +81,15 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  require 'remote_syslog_logger'
+  config.logger = ActiveSupport::TaggedLogging.new(
+    RemoteSyslogLogger.new(
+      'logs3.papertrailapp.com',
+      30094,
+      :program => "automatedcx-api-#{Rails.env}"
+    )
+  )
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
