@@ -82,6 +82,10 @@ gem 'google_custom_search_api'
 # Use to manage credentials
 gem 'figaro'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'paper_trail'
+gem 'rails_admin_history_rollback'
+gem 'remote_syslog_logger'
+
 # Use to be able to pay for automated_cx_api
 gem 'pay', '~> 2.0'
 # To use Stripe, also include:
@@ -89,13 +93,14 @@ gem 'stripe', '< 6.0', '>= 2.8'
 # To use Receipts
 gem 'receipts', '~> 1.0.0'
 gem 'sorbet-runtime'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'sorbet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'irb'
   gem 'rspec-rails'
   gem 'rswag-specs'
+  gem 'sorbet'
 end
 
 group :development do

@@ -3,6 +3,8 @@ class Routine < ApplicationRecord
   include RailsAdminCharts
   belongs_to :user
 
+  has_paper_trail
+
   scope :unscheduled, -> { where(status: 'unscheduled') }
 
   scope :based_on_company_name, lambda { |company_name, status|

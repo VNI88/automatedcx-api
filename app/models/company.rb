@@ -5,6 +5,7 @@ class Company < ApplicationRecord
   include RailsAdminCharts
   include Pay::Billable
 
+  has_paper_trail
   VALID_EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i.freeze
 
   has_many :users
