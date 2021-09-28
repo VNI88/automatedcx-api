@@ -16,11 +16,13 @@ module RailsAdmin
         RailsAdmin::Config::Actions.register(self)
 
         register_instance_option :member do
-         false
+          false
         end
+
         register_instance_option :collection do
           true
         end
+
         register_instance_option :pjax? do
           false
         end
