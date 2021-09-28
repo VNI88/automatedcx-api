@@ -23,7 +23,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use bug tracker tool
-gem "sentry-raven"
+gem 'sentry-rails'
+gem 'sentry-ruby'
 # Run background processes
 gem 'sidekiq'
 # Run scheduled jobs
