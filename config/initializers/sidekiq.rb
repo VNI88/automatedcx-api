@@ -1,12 +1,15 @@
 # typed: strict
 
+require 'remote_syslog_logger'
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV['REDIS_URL'] || 'redis://localhost:6379/0' }
-  config.logger = RemoteSyslogLogger.new(
+  config.logger = ActiveSupport::TaggedLogging.new(
+    RemoteSyslogLogger.new(
       'logs3.papertrailapp.com',
       30094,
       :program => "automatedcx-api-#{Rails.env}"
     )
+  )
 end
 
 Sidekiq.configure_client do |config|
