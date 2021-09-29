@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   def search_on_wikipedia(subject = nil)
     theme = extract_theme
 
-    result = Consulter::Wikipedia.new(subject || theme).call
+    result = Consulters::Wikipedia.new(subject || theme).call
 
     if result[:success?]
       Rails.logger.info(wikipedia_consulter_formatted_response(result[:payload]))
@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   def search_on_google(subject = nil)
     theme = extract_theme
 
-    result = Consulter::Google.new(subject || theme).call
+    result = Consulters::Google.new(subject || theme).call
 
     if result[:success?]
       Rails.logger.info(google_consulter_formatted_response(result[:payload]))
@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   def check_weather(location_provided_by_whatsapp = nil)
     location_provided_by_other_source = extract_location
 
-    result = Consulter::Weather.new(location_provided_by_whatsapp || location_provided_by_other_source).call
+    result = Consulters::Weather.new(location_provided_by_whatsapp || location_provided_by_other_source).call
 
     if result[:success?]
       Rails.logger.info(weather_checker_formatted_response(result[:payload]))
