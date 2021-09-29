@@ -9,7 +9,7 @@ class Company < ApplicationRecord
   VALID_EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i.freeze
 
   has_many :users
-  has_one :pricing
+  belongs_to :pricing
 
   before_create { self.pricing_id = Pricing.find_by(plan: :trial)&.id if pricing_id.nil? }
   before_save { self.processor = :stripe if processor.nil? }
