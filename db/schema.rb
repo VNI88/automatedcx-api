@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_015221) do
+ActiveRecord::Schema.define(version: 2021_09_25_031548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,28 @@ ActiveRecord::Schema.define(version: 2021_09_09_015221) do
     t.datetime "finished_at"
     t.string "name", null: false
     t.string "category", null: false
-    t.jsonb "metadata", default: {}
     t.bigint "previous_event_id"
     t.string "previous_event_name", default: "no_previous_event"
     t.string "next_event_name", default: "no_next_event"
     t.datetime "created_at"
+    t.bigint "recipient_list_id"
+    t.bigint "message_sender_id"
+    t.index ["message_sender_id"], name: "index_events_on_message_sender_id"
+    t.index ["recipient_list_id"], name: "index_events_on_recipient_list_id"
+  end
+
+  create_table "message_senders", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", default: "2021-09-25 04:04:35"
+    t.datetime "updated_at", default: "2021-09-25 04:04:35"
+  end
+
+  create_table "notifications", id: :serial, force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "message", null: false
+    t.string "status", default: "unpublished", null: false
+    t.datetime "created_at", default: "2021-09-25 04:04:40"
+    t.datetime "updated_at", default: "2021-09-25 04:04:40"
   end
 
   create_table "pay_charges", id: :serial, force: :cascade do |t|
@@ -101,6 +118,14 @@ ActiveRecord::Schema.define(version: 2021_09_09_015221) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "recipient_lists", id: :serial, force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "type"
+    t.jsonb "list", default: {}, null: false
+    t.datetime "created_at", default: "2021-09-25 03:32:03"
+    t.datetime "updated_at", default: "2021-09-25 03:32:03"
+  end
+
   create_table "routines", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "status", default: "unscheduled", null: false
@@ -113,8 +138,12 @@ ActiveRecord::Schema.define(version: 2021_09_09_015221) do
     t.string "periodicity", null: false
     t.datetime "starts_at"
     t.string "monitored_event"
-    t.string "message_template"
     t.datetime "created_at"
+    t.bigint "notification_id"
+    t.bigint "recipient_list_id"
+    t.bigint "message_sender_id"
+    t.index ["message_sender_id"], name: "index_routines_on_message_sender_id"
+    t.index ["recipient_list_id"], name: "index_routines_on_recipient_list_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -157,7 +186,14 @@ ActiveRecord::Schema.define(version: 2021_09_09_015221) do
   add_foreign_key "attendants", "users"
   add_foreign_key "attendences", "attendants"
   add_foreign_key "companies", "pricings"
+  add_foreign_key "events", "message_senders"
+  add_foreign_key "events", "recipient_lists"
   add_foreign_key "events", "users"
+  add_foreign_key "notifications", "companies"
+  add_foreign_key "recipient_lists", "companies"
+  add_foreign_key "routines", "message_senders"
+  add_foreign_key "routines", "notifications"
+  add_foreign_key "routines", "recipient_lists"
   add_foreign_key "routines", "users"
   add_foreign_key "users", "companies"
 end
