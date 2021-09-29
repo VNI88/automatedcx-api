@@ -1,0 +1,148 @@
+pt:
+  activerecord:
+    attributes:
+      user:
+        name: Nome
+        confirmation_sent_at: Confirmação enviada em
+        confirmation_token: Token de confirmação
+        confirmed_at: Confirmado em
+        created_at: Criado em
+        current_password: Senha atual
+        current_sign_in_at: Acesso atual
+        current_sign_in_ip: IP de acesso atual
+        email: Email
+        encrypted_password: Senha encriptada
+        failed_attempts: Tentativas com falha
+        last_sign_in_at: Último acesso em
+        last_sign_in_ip: Último IP de acesso
+        locked_at: Bloqueado em
+        password: Senha
+        password_confirmation: Confirmação de senha
+        remember_created_at: Lembrar data de criação
+        remember_me: Lembrar-me
+        reset_password_sent_at: Reset de senha enviado em
+        reset_password_token: Token de reset de senha
+        sign_in_count: Contagem de acessos
+        unconfirmed_email: Email não confirmado
+        unlock_token: Destravar token
+        updated_at: Atualizado em
+        role: Função
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+  devise:
+    confirmations:
+      confirmed: Seu endereço de email foi confirmado com sucesso
+      new:
+        resend_confirmation_instructions: Reenviar instruções de confirmação
+      send_instructions: Você vai receber um email com instruções sobre como confirmar o seu email em alguns minutos
+      send_paranoid_instructions: Se o seu email existir em nossa base de dados, você vai receber um email com instruções sobre como confirmar o seu endereço de email em alguns minutos
+    failure:
+      already_authenticated: Você está logado.
+      inactive: Sua conta não está ativa ainda.
+      invalid: Email %{authentication_keys} ou senha inválidos.
+      last_attempt: Você tem mais uma tentativa antes da sua conta ser bloqueada.
+      locked: Sua conta está bloqueada.
+      not_found_in_database: Email %{authentication_keys} ou senha inválidos.
+      timeout: Sua sessão expirou. Por favor acesse novamente para continuar.
+      unauthenticated: Você precisa acessar ou se cadastrar antes de continuar.
+      unconfirmed:  Você precisa confirmar seu email antes de continuar.
+    mailer:
+      confirmation_instructions:
+        action: Confirme minha conta
+        greeting: Bem vindo %{recipient}!
+        instruction: 'Você pode confirmar sua conta através do link abaixo:'
+        subject: Instruções de confirmação
+      email_changed:
+        greeting: Olá %{recipient}!
+        message: Nós estamos the contatando para notificar você que seu email foi alterado para %{email}.
+        subject: Email Alterado
+      password_change:
+        greeting: Olá %{recipient}!
+        message: Nós estamos contatando você para notificar que sua senha foi alterada.
+        subject: Senha alterada
+      reset_password_instructions:
+        action: Alterar minha senha
+        greeting: Olá %{recipient}!
+        instruction: Alguém solicitou um link para alterar a sua senha. Você pode fazer isso pelo link abaixo.
+        instruction_2: Se você não solicitou isso, por favor ignore esse email.
+        instruction_3: Sua senha não será alterada até que você acesse o link acima e crie uma nova senha.
+        subject: Instruções de reset de senha
+      unlock_instructions:
+        action: Desbloquear a minha conta
+        greeting: Olá %{recipient}!
+        instruction: 'Clique no link abaixo para desbloquear a sua conta:'
+        message: Sua conta foi bloqueada devido a um execesso de tentativas de excesso com falhas.
+        subject: Instruções de desbloqueio
+    omniauth_callbacks:
+      failure: Não foi possível autenticar você a partir de "%{kind}" por "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      edit:
+        change_my_password: Alterar minha senha
+        change_your_password: Alterar sua senha
+        confirm_new_password: Confirmar nova senha
+        new_password: Nova senha
+      new:
+        forgot_your_password: Esqueceu sua senha?
+        send_me_reset_password_instructions: Me envie instruções de reset
+      no_token: Você não pode ter acesso a essa página sem ter vindo de um email de reset de senha. Se você veio de um email de reset de senha, por favor garanta que você tenha usado a URL completa.
+      send_instructions: Você vai receber um email com instruções sobre como resetar sua senha em alguns minutos.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Sua senha foi alterada com sucesso. Você está conectado.
+      updated_not_active: Sua senha foi alterada com sucesso.
+    registrations:
+      destroyed: Até logo! Sua conta foi cancelada com sucesso. Nós esperamos te encontrar novamente.
+      edit:
+        are_you_sure: Você tem certeza?
+        cancel_my_account: Cancelar minha conta
+        currently_waiting_confirmation_for_email: 'Aguardando a confirmação para: %{email}'
+        leave_blank_if_you_don_t_want_to_change_it: deixe em branco se você não quer alterar
+        title: Editar %{resource}
+        unhappy: Infeliz?
+        update: Atualizar
+        we_need_your_current_password_to_confirm_your_changes: Nós precisamos da sua senha atual para confirmar as suas alterações
+      new:
+        sign_up: Cadastro
+      signed_up: Bem Vindo! Você se conectou com sucesso.
+      signed_up_but_inactive: Você se conectou com sucesso. Entretanto, sua conta não foi ativada ainda.
+      signed_up_but_locked: Você se conectou com sucesso. Entretanto, sua conta está bloqueada.
+      signed_up_but_unconfirmed: Um email com um link de confirmação foi enviado para o seu email. Por favor, siga as instruções para ativar sua conta.
+      update_needs_confirmation: Você atualizou sua conta com sucesso, mas nós precisamos verificar o seu endereço de email. Por favor cheque o seu email e siga o link de confirmação do seu novo endereço de email.
+      updated: Sua conta foi atualizada com sucesso.
+      updated_but_not_signed_in: Sua conta foi atualizada com sucesso, mas como sua senha foi alterada você precisa se reconectar.
+    sessions:
+      already_signed_out: Deconectado com sucesso.
+      new:
+        sign_in: Acessar
+      signed_in: Conectado.
+      signed_out: Desconectado com sucesso.
+    shared:
+      links:
+        back: Voltar
+        didn_t_receive_confirmation_instructions: Não recebeu as instruções de confirmação?
+        didn_t_receive_unlock_instructions: Não recebeu as instruções de desbloqueio?
+        forgot_your_password: Esqueceu sua senha?
+        sign_in: Acesso
+        sign_in_with_provider: Acesso com um %{provider}
+        sign_up: Cadastre-se
+      minimum_password_length:
+        one: "(%{count} mínimo de caracteres)"
+        other: "(%{count} mínimo de caracteres)"
+    unlocks:
+      new:
+        resend_unlock_instructions: Reenviar instruções de desbloqueio
+      send_instructions: Você vai receber um email com instruções sobre como desbloquear a sua conta em alguns minutos.
+      send_paranoid_instructions: Se sua conta existir, você vai receber um email com instruções sobre como desbloquear sua conta em alguns minutos.
+      unlocked: Sua conta foi desbloqueada com sucesso. Por favor conect-se para continuar.
+  errors:
+    messages:
+      already_confirmed: seu email já foi confirmado, por favor tente acessar sua conta
+      confirmation_period_expired: precisa ser confirmado em até %{period}, por favor envie um novo
+      expired: expirou, por favor envie um novo
+      not_found: não encontrado
+      not_locked: não foi bloqueado
+      not_saved:
+        one: '1 erro proibiu esse %{resource} de ser salvo:'
+        other: "%{count} erros proibiram esse %{resource} de ser salvo:"
