@@ -26,7 +26,7 @@ class Chatbot::WhatsappController < ApplicationController
     end
     render xml: response.to_xml, status: 200
   rescue StandardError => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
     render status: :unprocessable_entity
   end
 
