@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 require 'sidekiq'
@@ -8,11 +9,13 @@ class SubscriptionWorker
 
   def perform(company_id)
     company = Company.find(company_id)
+    return if company.subscriptions.find_by(name: :trial).present?
+
     create_trial_subscription(company)
     update_trial_end(company)
     update_plan(company)
   rescue SubscriptionWorkerError => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
   end
 
   private
@@ -26,7 +29,7 @@ class SubscriptionWorker
   end
 
   def update_trial_end(company)
-    company.update!(trial_ends_at: @subscription.trial_ends_at)
+    company.update!(trial_ends_at: company.subscriptions.last.trial_ends_at)
   end
 
   def update_plan(company)

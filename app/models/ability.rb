@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 class Ability
@@ -12,14 +13,24 @@ class Ability
         can %i[create read update export], Event, user_id: user.id
         can :manage, Routine, user_id: user.id
         can :read, User, company_id: user.company_id
+        can :manage, RecipientList, company_id: user.company.id
+        can :manage, MessageSender
+        can :manage, Notification, company_id: user.company.id
       elsif user.role == 'analyst'
         can %i[read export], [Routine, Event], user: { company_id: user.company_id }
         can %i[read export], User, user: { company_id: user.company_id }
         can :read, Company, id: user.company.id
+        can :read, RecipientList, company_id: user.company.id
+        can :read, MessageSender
+        can :read, Notification
       elsif user.role == 'admin'
         can :manage, [Routine, Event], user: { company_id: user.company_id }
         can :manage, User, company_id: user.company.id
         can :manage, Company, id: user.company.id
+        can :manage, RecipientList, company_id: user.company.id
+        can :manage, Notification, company_id: user.company.id
+        can :manage, MessageSender
+        can :read, Pricing
       elsif user.role == 'admin' && user.company&.name == 'AutomatedCX'
         can :manage, :all
       end

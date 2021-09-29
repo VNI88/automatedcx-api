@@ -1,3 +1,4 @@
+# typed: false
 class Chatbot::DialogFlowController < ApplicationController
  skip_before_action :verify_authenticity_token
 
@@ -11,11 +12,11 @@ class Chatbot::DialogFlowController < ApplicationController
     when 'weather'
       send_message_to(params['originalDetectIntentRequest']['source'], check_weather)
     else
-      Raven.capture_exception('Unknown dialog flow intent')
+      Sentry.capture_exception('Unknown dialog flow intent')
       render status: :not_found
     end
   rescue StandardError => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
     render status: :unprocessable_entity
   end
 
@@ -29,7 +30,7 @@ class Chatbot::DialogFlowController < ApplicationController
     case source
     when 'telegram'
       chat_id = params['originalDetectIntentRequest']['payload']['data']['chat']['id']
-      MessageSender::Telegram.new(chat_id, message).call
+      MessageSenders::Telegram.new(chat_id, message).call
     when 'facebook'
       messenger_response = {
         fulfillmentMessages: [

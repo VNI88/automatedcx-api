@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # The test environment is used exclusively to run your application's
@@ -9,6 +10,10 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_classes = false
+
+  config.i18n.fallbacks = true
+  config.i18n.available_locales = %w[pt en]
+  config.i18n.default_locale = :pt
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
@@ -36,6 +41,14 @@ Rails.application.configure do
   config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
+
+  require 'remote_syslog_logger'
+  config.logger = ActiveSupport::TaggedLogging.new(
+    RemoteSyslogLogger.new(
+      'logs3.papertrailapp.com', 30094,
+      :program => "rails-#{Rails.env}"
+    )
+  )
   # config.logger = Logger.new(STDOUT)
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the

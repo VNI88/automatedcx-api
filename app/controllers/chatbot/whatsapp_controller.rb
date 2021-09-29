@@ -1,3 +1,4 @@
+# typed: false
 class Chatbot::WhatsappController < ApplicationController
  # before_action :allow_twilio_webhook
  skip_before_action :verify_authenticity_token
@@ -25,7 +26,7 @@ class Chatbot::WhatsappController < ApplicationController
     end
     render xml: response.to_xml, status: 200
   rescue StandardError => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
     render status: :unprocessable_entity
   end
 

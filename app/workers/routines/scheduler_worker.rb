@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'sidekiq'
@@ -12,7 +13,7 @@ module Routines
     def perform
       routines_evaluation
     rescue Routines::SchedulerWorkerError => e
-      Raven.capture_exception(e)
+      Sentry.capture_exception(e)
     end
 
     private

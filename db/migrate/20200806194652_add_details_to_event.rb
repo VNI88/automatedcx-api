@@ -1,3 +1,4 @@
+# typed: true
 class AddDetailsToEvent < ActiveRecord::Migration[6.0]
   def change
     add_column :events, :previous_event_id, :bigint

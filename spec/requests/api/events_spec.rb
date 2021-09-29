@@ -1,3 +1,4 @@
+# typed: false
 require 'swagger_helper'
 
 RSpec.describe "events_controller", type: :request do

@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
@@ -16,7 +17,7 @@ class EventsController < ApplicationController
         next_event_name: params[:next_event_name]
       )
     rescue StandardError => error
-      Raven.capture_exception(error)
+      Sentry.capture_exception(error)
     end
   end
 

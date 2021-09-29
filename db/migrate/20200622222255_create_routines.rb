@@ -1,3 +1,4 @@
+# typed: true
 class CreateRoutines < ActiveRecord::Migration[6.0]
   def change
     create_table :routines, id: :serial do |t|

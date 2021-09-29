@@ -1,10 +1,11 @@
+# typed: false
 # frozen_string_literal: true
 
 # It centralize all base methods used by the controllers
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_current_user
+  before_action :set_current_user, :set_paper_trail_whodunnit
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user|
@@ -41,7 +42,7 @@ class ApplicationController < ActionController::Base
   def search_on_wikipedia(subject = nil)
     theme = extract_theme
 
-    result = Consulter::Wikipedia.new(subject || theme).call
+    result = Consulters::Wikipedia.new(subject || theme).call
 
     if result[:success?]
       Rails.logger.info(wikipedia_consulter_formatted_response(result[:payload]))
@@ -55,7 +56,7 @@ class ApplicationController < ActionController::Base
   def search_on_google(subject = nil)
     theme = extract_theme
 
-    result = Consulter::Google.new(subject || theme).call
+    result = Consulters::Google.new(subject || theme).call
 
     if result[:success?]
       Rails.logger.info(google_consulter_formatted_response(result[:payload]))
@@ -69,7 +70,7 @@ class ApplicationController < ActionController::Base
   def check_weather(location_provided_by_whatsapp = nil)
     location_provided_by_other_source = extract_location
 
-    result = Consulter::Weather.new(location_provided_by_whatsapp || location_provided_by_other_source).call
+    result = Consulters::Weather.new(location_provided_by_whatsapp || location_provided_by_other_source).call
 
     if result[:success?]
       Rails.logger.info(weather_checker_formatted_response(result[:payload]))

@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
+# typed: false
 class Event < ApplicationRecord
   include RailsAdminCharts
   belongs_to :user
   before_save :previous_event_id
+
+  has_paper_trail
 
   scope :unconfirmed_accounts, lambda {
     where(category: 'registration')

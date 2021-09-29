@@ -1,3 +1,4 @@
+# typed: true
 class ApiKeyStrategy < Warden::Strategies::Base
   def valid?
     api_key.present?
@@ -9,7 +10,7 @@ class ApiKeyStrategy < Warden::Strategies::Base
     if user
       success!(user)
     else
-      Raven.capture_message('Invalid api key')
+      Sentry.capture_message('Invalid api key')
       fail!('Invalid api key')
     end
   end

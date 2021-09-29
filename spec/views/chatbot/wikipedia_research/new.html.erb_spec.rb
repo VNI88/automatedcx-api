@@ -1,3 +1,4 @@
+# typed: false
 require 'rails_helper'
 
 RSpec.describe "wikipedia_research/new.html.erb", type: :view do
