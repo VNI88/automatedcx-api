@@ -14,24 +14,24 @@ class NotificationWorker < ::ApplicationWorker
       @message_sender = @routine.message_sender
       @notification = @routine.notification
 
-      Rails.logger.info("Creating sending event for routine_id: #{routine_id}")
+      logger.info("Creating sending event for routine_id: #{routine_id}")
       create_sending_event
 
       send_message
 
-      Rails.logger.info("Update notification - #{@notification.id} - status to: published")
+      logger.info("Update notification - #{@notification.id} - status to: published")
       @notification.update!(status: :publishes)
       @event.update!(finished_at: Time.current)
 
-      Rails.logger.info("Update routine_id - #{routine_id}, to completed")
+      logger.info("Update routine_id - #{routine_id}, to completed")
       @routine.update!(status: :completed, updated_at: Time.current, finished_at: Time.current)
 
-      Rails.logger.info("Creating service response event for routine_id: #{routine_id}")
+      logger.info("Creating service response event for routine_id: #{routine_id}")
       create_service_response_event
     end
   rescue NotificationWorkerError => e
     Sentry.capture_exception(e)
-    Rails.logger.error(e)
+    logger.error(e)
   end
 end
 
