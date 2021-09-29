@@ -3,7 +3,9 @@
 
 RailsAdmin.config do |config|
   require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
+  require Rails.root.join('lib', 'rails_admin', 'rails_admin_notification_sender.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ExportPdf)
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::SendNotificationImediatily)
 
   ### Popular gems integration
 
@@ -21,7 +23,7 @@ RailsAdmin.config do |config|
   # config.authorize_with :pundit
 
   ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -49,7 +51,7 @@ RailsAdmin.config do |config|
     export_pdf do
       except User
     end
-
+    send_notification_imediatily
     charts
     ## With an audit adapter, you can add:
     history_index
