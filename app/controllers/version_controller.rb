@@ -3,6 +3,6 @@
 
 class VersionController < ApplicationController
   def show
-    render plain: 'v8.1.0'
+    render plain: Sentry.release
   end
 end
