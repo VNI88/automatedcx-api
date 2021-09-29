@@ -32,7 +32,7 @@ module RailsAdmin
         end
 
         register_instance_option :link_icon do
-          'fas fa-comment-alt'
+          'far fa-comments'
         end
 
         register_instance_option :controller do
