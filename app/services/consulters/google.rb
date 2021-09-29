@@ -3,7 +3,7 @@
 
 # This class is responsible to make a research on Google
 
-module Consulter
+module Consulters
   class Google
     def initialize(theme)
       @theme = theme

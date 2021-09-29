@@ -5,7 +5,7 @@ require 'wikipedia'
 
 # This class is responsible to make a research on Wikipedia
 
-module Consulter
+module Consulters
   class Wikipedia
     def initialize(theme)
       @theme = theme

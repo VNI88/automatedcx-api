@@ -6,7 +6,7 @@ require 'open_weather'
 # This class is responsible to check weather in a
 # specific location
 
-module Consulter
+module Consulters
   class Weather
     def initialize(location)
       @location = location
