@@ -29,6 +29,10 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.i18n.fallbacks = true
+  config.i18n.available_locales = %w[pt en]
+  config.i18n.default_locale = :pt
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -61,12 +65,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  Raven.configure do |config|
-    config.dsn = 'https://88f9b757447b4c1d9bbcb6162dcf81de@o404238.ingest.sentry.io/5267631'
-  end
-
   config.webpacker.check_yarn_integrity = false
-  # config.assets.debug = false
+  config.assets.debug = false
   # config.hosts << "5ec8004e0fec.ngrok.io"
   # Devise configuration
   config.action_mailer.default_url_options = { host: ENV['STG_HOST'] }
