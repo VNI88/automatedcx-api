@@ -1,7 +1,12 @@
+# frozen_string_literal: true
 # typed: true
+
 class Routine < ApplicationRecord
   include RailsAdminCharts
   belongs_to :user
+  belongs_to :message_sender
+  belongs_to :recipient_list
+  belongs_to :notification
 
   has_paper_trail
 
@@ -13,7 +18,7 @@ class Routine < ApplicationRecord
       .where('companies.name = ?', company_name)
   }
 
-  scope :to_reschedule, -> { where(status: 'completed') }
+  scope :to_reschedule, -> { where(status: 'completed').not.where(periodicity: :unique) }
 
   def self.graph_data(_since = 30.days.ago)
     company_name = User.current.company.name
