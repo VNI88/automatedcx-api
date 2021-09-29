@@ -15,7 +15,7 @@ module Routines
         update_routine_status(routine)
       end
     rescue Routines::StatusWorkerError => e
-      Raven.capture_exception(e)
+      Sentry.capture_exception(e)
     end
 
     private
