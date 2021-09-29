@@ -12,7 +12,6 @@ class EventsController < ApplicationController
         user_id: current_user.id,
         name: params[:name],
         category: params[:category],
-        metadata: params[:metadata],
         previous_event_name: params[:previous_event_name],
         next_event_name: params[:next_event_name]
       )
