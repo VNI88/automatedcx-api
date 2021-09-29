@@ -17,7 +17,7 @@ class RoutinesController < ApplicationController
       monitored_event: params[:monitored_event]
     )
   rescue StandardError => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
   end
 
   def index
