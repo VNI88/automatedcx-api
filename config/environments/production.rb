@@ -70,6 +70,8 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
+  config.i18n.available_locales = %w[pt en]
+  config.i18n.default_locale = :pt
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -119,10 +121,6 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-
-  Raven.configure do |config|
-    config.dsn = 'https://88f9b757447b4c1d9bbcb6162dcf81de@o404238.ingest.sentry.io/5267631'
-  end
 
   # Devise configuration
   config.action_mailer.default_url_options = { host: ENV['STG_HOST'] || ENV['PRD_HOST'] }
