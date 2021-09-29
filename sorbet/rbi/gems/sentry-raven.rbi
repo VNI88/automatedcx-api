@@ -5,11 +5,11 @@
 #
 # If you would like to make changes to this file, great! Please create the gem's shim here:
 #
-#   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/sentry-raven/all/sentry-raven.rbi
+#   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/sentry-Sentry/all/sentry-Sentry.rbi
 #
-# sentry-raven-3.0.0
+# sentry-Sentry-3.0.0
 
-module Raven
+module Sentry
   def self.annotate(*args, &block); end
   def self.annotateException(*args, &block); end
   def self.annotate_exception(*args, &block); end
@@ -43,7 +43,7 @@ module Raven
   def self.tags_context(*args, &block); end
   def self.user_context(*args, &block); end
 end
-class Raven::Backtrace
+class Sentry::Backtrace
   def ==(other); end
   def initialize(lines); end
   def inspect; end
@@ -52,7 +52,7 @@ class Raven::Backtrace
   def self.parse(backtrace, opts = nil); end
   def to_s; end
 end
-class Raven::Backtrace::Line
+class Sentry::Backtrace::Line
   def ==(other); end
   def file; end
   def file=(arg0); end
@@ -69,7 +69,7 @@ class Raven::Backtrace::Line
   def self.parse(unparsed_line); end
   def to_s; end
 end
-class Raven::Breadcrumb
+class Sentry::Breadcrumb
   def category; end
   def category=(arg0); end
   def data; end
@@ -85,7 +85,7 @@ class Raven::Breadcrumb
   def type; end
   def type=(arg0); end
 end
-class Raven::BreadcrumbBuffer
+class Sentry::BreadcrumbBuffer
   def buffer; end
   def buffer=(arg0); end
   def each(&block); end
@@ -99,11 +99,11 @@ class Raven::BreadcrumbBuffer
   def to_hash; end
   include Enumerable
 end
-class Raven::Processor
+class Sentry::Processor
   def initialize(client = nil); end
   def process(_data); end
 end
-class Raven::Processor::SanitizeData < Raven::Processor
+class Sentry::Processor::SanitizeData < Sentry::Processor
   def fields_re; end
   def initialize(client); end
   def matches_regexes?(k, v); end
@@ -120,24 +120,24 @@ class Raven::Processor::SanitizeData < Raven::Processor
   def use_boundary?(string); end
   def utf8_processor; end
 end
-class Raven::Processor::RemoveCircularReferences < Raven::Processor
+class Sentry::Processor::RemoveCircularReferences < Sentry::Processor
   def process(value, visited = nil); end
 end
-class Raven::Processor::UTF8Conversion < Raven::Processor
+class Sentry::Processor::UTF8Conversion < Sentry::Processor
   def process(value); end
   def remove_invalid_bytes(string); end
 end
-class Raven::Processor::Cookies < Raven::Processor
+class Sentry::Processor::Cookies < Sentry::Processor
   def process(data); end
   def process_if_string_keys(data); end
   def process_if_symbol_keys(data); end
 end
-class Raven::Processor::PostData < Raven::Processor
+class Sentry::Processor::PostData < Sentry::Processor
   def process(data); end
   def process_if_string_keys(data); end
   def process_if_symbol_keys(data); end
 end
-class Raven::Processor::HTTPHeaders < Raven::Processor
+class Sentry::Processor::HTTPHeaders < Sentry::Processor
   def fields_re; end
   def initialize(client); end
   def matches_regexes?(k); end
@@ -149,7 +149,7 @@ class Raven::Processor::HTTPHeaders < Raven::Processor
   def special_characters?(string); end
   def use_boundary?(string); end
 end
-class Raven::Configuration
+class Sentry::Configuration
   def [](option); end
   def app_dirs_pattern; end
   def app_dirs_pattern=(arg0); end
@@ -267,7 +267,7 @@ class Raven::Configuration
   def transport_failure_callback=(value); end
   def valid?; end
 end
-class Raven::Context
+class Sentry::Context
   def extra; end
   def extra=(arg0); end
   def initialize; end
@@ -288,7 +288,7 @@ class Raven::Context
   def user; end
   def user=(arg0); end
 end
-class Raven::Client
+class Sentry::Client
   def configuration; end
   def configuration=(arg0); end
   def encode(event); end
@@ -301,7 +301,7 @@ class Raven::Client
   def successful_send; end
   def transport; end
 end
-class Raven::ClientState
+class Sentry::ClientState
   def failed?; end
   def failure(retry_after = nil); end
   def initialize; end
@@ -309,7 +309,7 @@ class Raven::ClientState
   def should_try?; end
   def success; end
 end
-class Raven::Event
+class Sentry::Event
   def [](key); end
   def []=(key, value); end
   def add_exception_interface(exc); end
@@ -381,23 +381,23 @@ class Raven::Event
   def user; end
   def user=(arg0); end
 end
-class Raven::LineCache
+class Sentry::LineCache
   def get_file_context(filename, lineno, context); end
   def getline(path, n); end
   def getlines(path); end
   def initialize; end
   def valid_path?(path); end
 end
-class Raven::Logger < Logger
+class Sentry::Logger < Logger
   def initialize(*arg0); end
 end
-class Raven::Interface
+class Sentry::Interface
   def initialize(attributes = nil); end
   def self.inherited(klass); end
   def self.registered; end
   def to_hash; end
 end
-class Raven::MessageInterface < Raven::Interface
+class Sentry::MessageInterface < Sentry::Interface
   def initialize(*arguments); end
   def message; end
   def message=(arg0); end
@@ -406,13 +406,13 @@ class Raven::MessageInterface < Raven::Interface
   def self.sentry_alias; end
   def unformatted_message; end
 end
-class Raven::ExceptionInterface < Raven::Interface
+class Sentry::ExceptionInterface < Sentry::Interface
   def self.sentry_alias; end
   def to_hash(*args); end
   def values; end
   def values=(arg0); end
 end
-class Raven::SingleExceptionInterface < Raven::Interface
+class Sentry::SingleExceptionInterface < Sentry::Interface
   def module; end
   def module=(arg0); end
   def stacktrace; end
@@ -423,14 +423,14 @@ class Raven::SingleExceptionInterface < Raven::Interface
   def value; end
   def value=(arg0); end
 end
-class Raven::StacktraceInterface < Raven::Interface
+class Sentry::StacktraceInterface < Sentry::Interface
   def frames; end
   def frames=(arg0); end
   def initialize(*arguments); end
   def self.sentry_alias; end
   def to_hash(*args); end
 end
-class Raven::StacktraceInterface::Frame < Raven::Interface
+class Sentry::StacktraceInterface::Frame < Sentry::Interface
   def abs_path; end
   def abs_path=(arg0); end
   def context_line; end
@@ -456,7 +456,7 @@ class Raven::StacktraceInterface::Frame < Raven::Interface
   def vars; end
   def vars=(arg0); end
 end
-class Raven::HttpInterface < Raven::Interface
+class Sentry::HttpInterface < Sentry::Interface
   def cookies; end
   def cookies=(arg0); end
   def data; end
@@ -473,17 +473,17 @@ class Raven::HttpInterface < Raven::Interface
   def self.sentry_alias; end
   def url; end
   def url=(arg0); end
-  include Raven::RackInterface
+  include Sentry::RackInterface
 end
-module Raven::Transports
+module Sentry::Transports
 end
-class Raven::Transports::Transport
+class Sentry::Transports::Transport
   def configuration; end
   def configuration=(arg0); end
   def initialize(configuration); end
   def send_event; end
 end
-class Raven::Transports::HTTP < Raven::Transports::Transport
+class Sentry::Transports::HTTP < Sentry::Transports::Transport
   def adapter; end
   def adapter=(arg0); end
   def conn; end
@@ -494,13 +494,13 @@ class Raven::Transports::HTTP < Raven::Transports::Transport
   def set_conn; end
   def ssl_configuration; end
 end
-module Raven::Utils
+module Sentry::Utils
 end
-module Raven::Utils::DeepMergeHash
+module Sentry::Utils::DeepMergeHash
   def self.deep_merge!(hash, other_hash, &block); end
   def self.deep_merge(hash, other_hash, &block); end
 end
-class Raven::Utils::RealIp
+class Sentry::Utils::RealIp
   def calculate_ip; end
   def filter_local_addresses(ips); end
   def initialize(ip_addresses); end
@@ -510,10 +510,10 @@ class Raven::Utils::RealIp
   def ip_addresses=(arg0); end
   def ips_from(header); end
 end
-module Raven::Utils::ExceptionCauseChain
+module Sentry::Utils::ExceptionCauseChain
   def self.exception_to_array(exception); end
 end
-class Raven::Instance
+class Sentry::Instance
   def annotate_exception(exc, options = nil); end
   def breadcrumbs; end
   def capture(options = nil); end
@@ -538,50 +538,50 @@ class Raven::Instance
   def tags_context(options = nil); end
   def user_context(options = nil); end
 end
-class Raven::Error < StandardError
+class Sentry::Error < StandardError
 end
-class Raven::Rails < Rails::Railtie
+class Sentry::Rails < Rails::Railtie
 end
-module Raven::Rails::Overrides
+module Sentry::Rails::Overrides
 end
-module Raven::Rails::Overrides::StreamingReporter
+module Sentry::Rails::Overrides::StreamingReporter
   def log_error(exception); end
 end
-module Raven::Rails::Overrides::OldStreamingReporter
-  def log_error_with_raven(exception); end
+module Sentry::Rails::Overrides::OldStreamingReporter
+  def log_error_with_Sentry(exception); end
   def self.included(base); end
 end
-module Raven::Rails::ControllerMethods
+module Sentry::Rails::ControllerMethods
   def capture_exception(exception, options = nil); end
   def capture_message(message, options = nil); end
 end
-module Raven::Rails::ControllerTransaction
+module Sentry::Rails::ControllerTransaction
   def self.included(base); end
 end
-class Raven::SidekiqCleanupMiddleware
+class Sentry::SidekiqCleanupMiddleware
   def call(_worker, job, queue); end
 end
-class Raven::SidekiqErrorHandler
+class Sentry::SidekiqErrorHandler
   def call(ex, context); end
   def filter_context(context); end
   def filter_context_hash(key, value); end
   def format_globalid(context); end
   def transaction_from_context(context); end
 end
-class Raven::Rack
+class Sentry::Rack
   def call(env); end
   def initialize(app); end
   def self.capture_exception(exception, env, options = nil); end
   def self.capture_message(exception, env, options = nil); end
   def self.capture_type(exception, env, options = nil); end
 end
-module Raven::RackInterface
+module Sentry::RackInterface
   def format_env_for_sentry(env_hash); end
   def format_headers_for_sentry(env_hash); end
   def from_rack(env_hash); end
   def read_data_from(request); end
 end
-class Raven::CLI
+class Sentry::CLI
   def self.test(dsn = nil, silent = nil, config = nil); end
 end
 module Rake
@@ -589,14 +589,14 @@ end
 class Rake::Application
   def orig_display_error_messsage(ex); end
 end
-module Raven::Rails::ActiveJobExtensions
+module Sentry::Rails::ActiveJobExtensions
   def already_supported_by_specific_integration?(job); end
   def capture_and_reraise_with_sentry(job, block); end
-  def raven_context(job); end
+  def Sentry_context(job); end
   def self.included(base); end
 end
 class ActiveJob::Base
-  include Raven::Rails::ActiveJobExtensions
+  include Sentry::Rails::ActiveJobExtensions
 end
 class ActionMailer::MailDeliveryJob < ActiveJob::Base
   def self.__callbacks; end
@@ -604,10 +604,10 @@ end
 class ActionMailer::Parameterized::DeliveryJob < ActionMailer::DeliveryJob
   def self.__callbacks; end
 end
-module Raven::Rails::Overrides::DebugExceptionsCatcher
+module Sentry::Rails::Overrides::DebugExceptionsCatcher
   def render_exception(env_or_request, exception); end
 end
-module Raven::Rails::Overrides::OldDebugExceptionsCatcher
-  def render_exception_with_raven(env_or_request, exception); end
+module Sentry::Rails::Overrides::OldDebugExceptionsCatcher
+  def render_exception_with_Sentry(env_or_request, exception); end
   def self.included(base); end
 end

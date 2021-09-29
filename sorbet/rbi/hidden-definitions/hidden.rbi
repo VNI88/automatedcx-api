@@ -78,7 +78,7 @@ module ActionController::HttpAuthentication::Token
 end
 
 module ActionController::Live
-  include ::Raven::Rails::Overrides::StreamingReporter
+  include ::Sentry::Rails::Overrides::StreamingReporter
 end
 
 class ActionController::Live::SSE
@@ -206,7 +206,7 @@ end
 ActionDispatch::Cookies::SerializedCookieJars::SERIALIZER = ActiveSupport::MessageEncryptor::NullSerializer
 
 class ActionDispatch::DebugExceptions
-  include ::Raven::Rails::Overrides::DebugExceptionsCatcher
+  include ::Sentry::Rails::Overrides::DebugExceptionsCatcher
 end
 
 class ActionDispatch::DebugLocks
@@ -945,7 +945,7 @@ class ActionView::StreamingFlow
 end
 
 class ActionView::StreamingTemplateRenderer::Body
-  include ::Raven::Rails::Overrides::StreamingReporter
+  include ::Sentry::Rails::Overrides::StreamingReporter
 end
 
 class ActionView::Template::Error
@@ -15819,28 +15819,28 @@ class Range
   def to_a(); end
 end
 
-module Raven
+module Sentry
   AVAILABLE_INTEGRATIONS = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Backtrace
+class Sentry::Backtrace
   APP_DIRS_PATTERN = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Backtrace::Line
+class Sentry::Backtrace::Line
   JAVA_INPUT_FORMAT = ::T.let(nil, ::T.untyped)
   RB_EXTENSION = ::T.let(nil, ::T.untyped)
   RUBY_INPUT_FORMAT = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Client
+class Sentry::Client
   CONTENT_TYPE = ::T.let(nil, ::T.untyped)
   PROTOCOL_VERSION = ::T.let(nil, ::T.untyped)
   USER_AGENT = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Configuration
+class Sentry::Configuration
   DEFAULT_PROCESSORS = ::T.let(nil, ::T.untyped)
   HEROKU_DYNO_METADATA_MESSAGE = ::T.let(nil, ::T.untyped)
   IGNORE_DEFAULT = ::T.let(nil, ::T.untyped)
@@ -15848,47 +15848,47 @@ class Raven::Configuration
   MODULE_SEPARATOR = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Event
+class Sentry::Event
   MAX_MESSAGE_SIZE_IN_BYTES = ::T.let(nil, ::T.untyped)
   SDK = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Logger
+class Sentry::Logger
   LOG_PREFIX = ::T.let(nil, ::T.untyped)
   PROGNAME = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Processor
+class Sentry::Processor
   INT_MASK = ::T.let(nil, ::T.untyped)
   REGEX_SPECIAL_CHARACTERS = ::T.let(nil, ::T.untyped)
   STRING_MASK = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Processor::HTTPHeaders
+class Sentry::Processor::HTTPHeaders
   DEFAULT_FIELDS = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Processor::SanitizeData
+class Sentry::Processor::SanitizeData
   CREDIT_CARD_RE = ::T.let(nil, ::T.untyped)
   DEFAULT_FIELDS = ::T.let(nil, ::T.untyped)
   JSON_STARTS_WITH = ::T.let(nil, ::T.untyped)
   QUERY_STRING = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Processor::UTF8Conversion
+class Sentry::Processor::UTF8Conversion
   REPLACE = ::T.let(nil, ::T.untyped)
 end
 
-module Raven::Rails::ActiveJobExtensions
+module Sentry::Rails::ActiveJobExtensions
   ALREADY_SUPPORTED_SENTRY_ADAPTERS = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::SidekiqErrorHandler
+class Sentry::SidekiqErrorHandler
   ACTIVEJOB_RESERVED_PREFIX = ::T.let(nil, ::T.untyped)
   HAS_GLOBALID = ::T.let(nil, ::T.untyped)
 end
 
-class Raven::Utils::RealIp
+class Sentry::Utils::RealIp
   LOCAL_ADDRESSES = ::T.let(nil, ::T.untyped)
 end
 

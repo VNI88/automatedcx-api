@@ -8719,40 +8719,40 @@
 # uninitialized constant Range::RANGE_FORMATS
 # wrong constant name entries
 # wrong constant name to_a
-# uninitialized constant Raven::Logger::DEBUG
-# uninitialized constant Raven::Logger::ERROR
-# Did you mean?  Raven::Logger::Error
-#                Raven::Error
+# uninitialized constant Sentry::Logger::DEBUG
+# uninitialized constant Sentry::Logger::ERROR
+# Did you mean?  Sentry::Logger::Error
+#                Sentry::Error
 #                IOError
 #                PGError
 #                Errno
-# uninitialized constant Raven::Logger::FATAL
-# uninitialized constant Raven::Logger::INFO
-# uninitialized constant Raven::Logger::ProgName
-# Did you mean?  Raven::Logger::PROGNAME
-# uninitialized constant Raven::Logger::SEV_LABEL
-# uninitialized constant Raven::Logger::UNKNOWN
-# uninitialized constant Raven::Logger::VERSION
-# Did you mean?  Raven::VERSION
-# uninitialized constant Raven::Logger::WARN
-# uninitialized constant Raven::Processor::HTTPHeaders::INT_MASK
-# Did you mean?  Raven::Processor::INT_MASK
-# uninitialized constant Raven::Processor::HTTPHeaders::REGEX_SPECIAL_CHARACTERS
-# Did you mean?  Raven::Processor::REGEX_SPECIAL_CHARACTERS
-# uninitialized constant Raven::Processor::HTTPHeaders::STRING_MASK
-# Did you mean?  Raven::Processor::STRING_MASK
-# uninitialized constant Raven::Processor::SanitizeData::INT_MASK
-# Did you mean?  Raven::Processor::INT_MASK
-# uninitialized constant Raven::Processor::SanitizeData::REGEX_SPECIAL_CHARACTERS
-# Did you mean?  Raven::Processor::REGEX_SPECIAL_CHARACTERS
-# uninitialized constant Raven::Processor::SanitizeData::STRING_MASK
-# Did you mean?  Raven::Processor::STRING_MASK
-# uninitialized constant Raven::Processor::UTF8Conversion::INT_MASK
-# Did you mean?  Raven::Processor::INT_MASK
-# uninitialized constant Raven::Processor::UTF8Conversion::REGEX_SPECIAL_CHARACTERS
-# Did you mean?  Raven::Processor::REGEX_SPECIAL_CHARACTERS
-# uninitialized constant Raven::Processor::UTF8Conversion::STRING_MASK
-# Did you mean?  Raven::Processor::STRING_MASK
+# uninitialized constant Sentry::Logger::FATAL
+# uninitialized constant Sentry::Logger::INFO
+# uninitialized constant Sentry::Logger::ProgName
+# Did you mean?  Sentry::Logger::PROGNAME
+# uninitialized constant Sentry::Logger::SEV_LABEL
+# uninitialized constant Sentry::Logger::UNKNOWN
+# uninitialized constant Sentry::Logger::VERSION
+# Did you mean?  Sentry::VERSION
+# uninitialized constant Sentry::Logger::WARN
+# uninitialized constant Sentry::Processor::HTTPHeaders::INT_MASK
+# Did you mean?  Sentry::Processor::INT_MASK
+# uninitialized constant Sentry::Processor::HTTPHeaders::REGEX_SPECIAL_CHARACTERS
+# Did you mean?  Sentry::Processor::REGEX_SPECIAL_CHARACTERS
+# uninitialized constant Sentry::Processor::HTTPHeaders::STRING_MASK
+# Did you mean?  Sentry::Processor::STRING_MASK
+# uninitialized constant Sentry::Processor::SanitizeData::INT_MASK
+# Did you mean?  Sentry::Processor::INT_MASK
+# uninitialized constant Sentry::Processor::SanitizeData::REGEX_SPECIAL_CHARACTERS
+# Did you mean?  Sentry::Processor::REGEX_SPECIAL_CHARACTERS
+# uninitialized constant Sentry::Processor::SanitizeData::STRING_MASK
+# Did you mean?  Sentry::Processor::STRING_MASK
+# uninitialized constant Sentry::Processor::UTF8Conversion::INT_MASK
+# Did you mean?  Sentry::Processor::INT_MASK
+# uninitialized constant Sentry::Processor::UTF8Conversion::REGEX_SPECIAL_CHARACTERS
+# Did you mean?  Sentry::Processor::REGEX_SPECIAL_CHARACTERS
+# uninitialized constant Sentry::Processor::UTF8Conversion::STRING_MASK
+# Did you mean?  Sentry::Processor::STRING_MASK
 # wrong constant name expand
 # wrong constant name fire_update!
 # wrong constant name ruby

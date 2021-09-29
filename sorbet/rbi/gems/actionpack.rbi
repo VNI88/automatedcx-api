@@ -2971,8 +2971,8 @@ class ActionController::API < ActionController::Metal
   include CanCan::ControllerAdditions
   include Devise::Controllers::Helpers
   include Devise::Controllers::UrlHelpers
-  include Raven::Rails::ControllerMethods
-  include Raven::Rails::ControllerTransaction
+  include Sentry::Rails::ControllerMethods
+  include Sentry::Rails::ControllerTransaction
   include Remotipart::RenderOverrides
   include Remotipart::RequestHelper
   include Turbolinks::Controller
@@ -3262,8 +3262,8 @@ class ActionController::Base < ActionController::Metal
   include CanCan::ControllerAdditions
   include Devise::Controllers::Helpers
   include Devise::Controllers::UrlHelpers
-  include Raven::Rails::ControllerMethods
-  include Raven::Rails::ControllerTransaction
+  include Sentry::Rails::ControllerMethods
+  include Sentry::Rails::ControllerTransaction
   include Remotipart::RenderOverrides
   include Remotipart::RequestHelper
   include Turbolinks::Controller
