@@ -1,6 +1,7 @@
 :schedule:
   Routines::SchedulerWorker:
     cron: '0 */2 * * *'
-:status:
   Routines::StatusWorker:
     cron: '0 */5 * * *'
+:queues:
+  - default

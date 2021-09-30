@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_25_031548) do
+ActiveRecord::Schema.define(version: 2021_09_29_022508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_031548) do
 
   create_table "recipient_lists", id: :serial, force: :cascade do |t|
     t.bigint "company_id", null: false
-    t.string "type"
+    t.string "category"
     t.jsonb "list", default: {}, null: false
     t.datetime "created_at", default: "2021-09-25 03:32:03"
     t.datetime "updated_at", default: "2021-09-25 03:32:03"

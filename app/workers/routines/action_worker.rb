@@ -17,11 +17,11 @@ module Routines
       @notification = @routine.notification
 
       Rails.logger.info("Creating sending event for routine_id: #{routine_id}")
-      create_sending_event
+      event = create_sending_event
 
       Rails.logger.info("Update notification - #{@notification.id} - status to: published")
       @notification.update!(status: :published)
-      @event.update!(finished_at: Time.current)
+      event.update!(finished_at: Time.current)
 
       Rails.logger.info("Creating service response event for routine_id: #{routine_id}")
       execute_routine(@routine.action)
