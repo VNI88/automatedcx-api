@@ -15,13 +15,13 @@ class NotificationWorker < ::ApplicationWorker
       @notification = @routine.notification
 
       logger.info("Creating sending event for routine_id: #{routine_id}")
-      create_sending_event
+      event = create_sending_event
 
       send_message
 
       logger.info("Update notification - #{@notification.id} - status to: published")
       @notification.update!(status: :publishes)
-      @event.update!(finished_at: Time.current)
+      event.update!(finished_at: Time.current)
 
       logger.info("Update routine_id - #{routine_id}, to completed")
       @routine.update!(status: :completed, updated_at: Time.current, finished_at: Time.current)
