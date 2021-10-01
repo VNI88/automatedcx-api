@@ -34,7 +34,9 @@ pt:
   datetime:
     distance_in_words:
       about_x_hours: "A %{count} horas"
-      x_days: "%{count} horas"
+      x_days: "%{count} dias"
+      x_minutes: "%{count} minutos"
+      x_months: "%{count} meses"
   date:
     day_names: [Domingo, Segunda-feira, Terça-feira, Quarta-feira, Quinta-feira, Sexta-feira, Sábado]
     month_names: [Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
@@ -219,12 +221,12 @@ pt:
       add_filter: 'Adicionar Filtro'
       refresh: 'Aplicar Filtro'
       bulk_menu_title: 'Menu'
-      ago: 'Atrás'
+      ago: 'atrás'
       search: 'Pesquisar'
     table_headers:
       model_name: 'Tabelas'
-      last_created: 'Tabelas'
-      records: 'Registros'
+      last_created: 'Último registro'
+      records: 'Número de Registros'
     form:
       optional: 'Opcional'
       required: 'Obrigatório'
