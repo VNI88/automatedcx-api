@@ -10,6 +10,8 @@ class NotificationWorker < ::ApplicationWorker
   def perform(routine_id)
     ActiveRecord::Base.transaction do
       @routine = Routine.find(routine_id)
+      return if @routine.status.include?('completed')
+
       @recipient_list = @routine.recipient_list
       @message_sender = @routine.message_sender
       @notification = @routine.notification
@@ -20,7 +22,7 @@ class NotificationWorker < ::ApplicationWorker
       send_message
 
       logger.info("Update notification - #{@notification.id} - status to: published")
-      @notification.update!(status: :publishes)
+      @notification.update!(status: :published)
       event.update!(finished_at: Time.current)
 
       logger.info("Update routine_id - #{routine_id}, to completed")
