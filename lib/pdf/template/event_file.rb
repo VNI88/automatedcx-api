@@ -37,7 +37,7 @@ module Pdf
 
           company_events.limit(50).each do |event|
             pdf.text %Q{ Id #{event.id}, Category - #{event.category}, Name - #{event.event_name},\n
-              Created by - #{event.user_name}, Previous event name - #{event.previous_event_name}, Next event name - #{event.next_event_name},\n
+              Created by - #{event.user.name}, Previous event name - #{event.previous_event_name}, Next event name - #{event.next_event_name},\n
               Created at - #{event.created_at.strftime("%d/%m/%y at %H:%M")}, Started at - #{event.started_at.strftime("%d/%m/%y at %H:%M")}, Finished at - #{event.finished_at.strftime("%d/%m/%y at %H:%M")}
              }, :size => 12, :align => :justify, :inline_format => true
             pdf.move_down 8

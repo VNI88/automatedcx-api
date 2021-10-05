@@ -47,7 +47,7 @@ class ApplicationWorker
       MessageSenders::Mailgun.new(
         from: contact_datum[:from],
         to: contact_datum[:to],
-        subject: contact_datum.type,
+        subject: contact_datum.category,
         text: @notification.message
       ).call
     end

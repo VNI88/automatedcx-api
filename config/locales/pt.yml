@@ -34,8 +34,12 @@ pt:
   datetime:
     distance_in_words:
       about_x_hours: "A %{count} horas"
+      about_x_months: "A %{count} meses"
+      about_x_minutes: "A %{count} minutos"
+      about_x_seconds: "A %{count} segundos"
       x_days: "%{count} dias"
       x_minutes: "%{count} minutos"
+      x_segundos: "%{count} segundos"
       x_months: "%{count} meses"
   date:
     day_names: [Domingo, Segunda-feira, Terça-feira, Quarta-feira, Quinta-feira, Sexta-feira, Sábado]

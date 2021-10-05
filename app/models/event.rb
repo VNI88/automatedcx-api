@@ -35,7 +35,7 @@ class Event < ApplicationRecord
 
   def self.based_on_company_name_columns_alias
     'events.user_id, events.id, events.started_at, events.finished_at, events.name AS event_name,'\
-      ' events.category, events.metadata, events.previous_event_id, events.previous_event_name,'\
+      ' events.category, events.previous_event_id, events.previous_event_name,'\
       ' events.next_event_name, events.created_at, users.name AS user_name'\
   end
 
